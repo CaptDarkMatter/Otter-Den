@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Frog.gd" type="Script" id=1]
+[ext_resource path="res://RigidBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Otter Den Assets/Frog2.jpg" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 84.4815, 91.7874 )
+
+[node name="Frog" type="Node2D"]
+position = Vector2( 482.306, -174.902 )
+z_index = 3
+script = ExtResource( 1 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 0.01
+gravity_scale = 0.0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2( -2.49973, -0.167801 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+position = Vector2( -3.81104, 2.55676 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
