@@ -1,37 +1,42 @@
-extends Node
+extends Camera2D
+export(float) var max_zoom = 4.0
+export(float) var min_zoom = 0.25
+export(NodePath) var shipPath
 
 var touchStart
-export var zoomOutMin = 1
-export var zoomOutMax = 8
+var ship
 
 func _ready():
 	set_process_input(true)
 	set_process(true)
+	ship = get_node(shipPath)
+	self.position = ship.position
 	pass
 	
 func _input(event):
+	var key_str = ""
 	if event is InputEventMouseButton:
 		touchStart = get_viewport().get_mouse_position()
+		#get_global_mouse_position() or get_camera_screen_center() might help fix this problem
+	
+	# Wheel Up Event
+	if event.is_action_pressed("zoom_in") or key_str == '+':
+		#print(event.position)
+		_zoom_camera(-1)
+		# Wheel Down Event
+	elif event.is_action_pressed("zoom_out") or key_str == '-':
+		_zoom_camera(1)
 	pass
 	
 func _process(delta):
 	if Input.is_action_pressed("mouse_left"):
 		var direction = touchStart - get_viewport().get_mouse_position()
 		self.position += direction
+		
 	pass
-	
-func _zoom(var increment):
-	return increment
-	
-#	This is all psedo-code for the Camera Script imported from Unity. Use this as an example for remaking in Godot.
-	#Vector2 touchStart //this is the point in space where you first put your finger to move.
-#	void update //this could be one of two things in godot. either the _process func or _input. still dont know yet.
-# 	if(Input.GetMouseButtonDown(0)){ //this is asking when we first detect a touch on the screen we want to find where it began
-#		touchStart = Camera.main.ScreenToWorldPoint(Input.MousePosition) convert touch position to world space point.
-# 	}
-#	if(Input.GetMouseButtonDown(0)){ //this is true for the entire durration of the touch.
-#		var direction = Vector2()
-#		direction = touchStart - Camera.main.ScreenToWorldPoint(Input.MousePosition)
-#		Camera.main.transform.position += direction
-# 	} 
-	
+
+# Zoom Camera
+func _zoom_camera(dir):
+	zoom += Vector2(0.1, 0.1) * dir
+	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
+	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
