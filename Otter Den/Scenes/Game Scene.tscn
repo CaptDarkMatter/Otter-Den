@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Game Scene.gd" type="Script" id=1]
-[ext_resource path="res://Otter Den Assets/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg" type="Texture" id=2]
-[ext_resource path="res://Frog.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Ship.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Game Scene.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/Ship.tscn" type="PackedScene" id=3]
 
 [node name="Game Scene" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,8 +15,5 @@ scale = Vector2( 4.57627, 5.42373 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Frog" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 0 )
-
-[node name="Ship" parent="." instance=ExtResource( 4 )]
+[node name="Ship" parent="." instance=ExtResource( 3 )]
 position = Vector2( 600, 978.659 )
