@@ -124,35 +124,35 @@ func pretend_multi_touch(event):
 			_touches[_debug_cur_touch]["current"] = event
 
 	update_touch_info()
-#	update_pinch_gesture()
-#
-#
-#func update_pinch_gesture():
-#	if _touches.size() < 2:
-#		_touches_info["radius"] = 0
-#		_touches_info["previous_radius"] = 0
-#		return
-#
-#	_touches_info["previous_radius"] = _touches_info["radius"]
-#	_touches_info["radius"] = (_touches.values()[0].current.position - _touches_info["target"]).length()
-#
-#	if _touches_info["previous_radius"] == 0:
-#		return
-#
-#	var zoom_factor = (_touches_info["previous_radius"] - _touches_info["radius"]) / _touches_info["previous_radius"]
-#	var final_zoom = zoom.x + zoom_factor
-#
-#	zoom = Vector2(final_zoom,final_zoom)
-#	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
-#	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
-#
-#	var vp_size = self.get_viewport().size
-#	if get_viewport().is_size_override_enabled():
-#		vp_size = get_viewport().get_size_override()
-#	var old_dist = ((_touches_info["target"] - (vp_size / 2.0))*(zoom-Vector2(zoom_factor, zoom_factor)))
-#	var new_dist = ((_touches_info["target"] - (vp_size / 2.0))*zoom)
-#	var cam_need_move = old_dist - new_dist
-#	self.position += cam_need_move
+	update_pinch_gesture()
+
+
+func update_pinch_gesture():
+	if _touches.size() < 2:
+		_touches_info["radius"] = 0
+		_touches_info["previous_radius"] = 0
+		return
+
+	_touches_info["previous_radius"] = _touches_info["radius"]
+	_touches_info["radius"] = (_touches.values()[0].current.position - _touches_info["target"]).length()
+
+	if _touches_info["previous_radius"] == 0:
+		return
+
+	var zoom_factor = (_touches_info["previous_radius"] - _touches_info["radius"]) / _touches_info["previous_radius"]
+	var final_zoom = zoom.x + zoom_factor
+
+	zoom = Vector2(final_zoom,final_zoom)
+	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
+	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
+
+	var vp_size = self.get_viewport().size
+	if get_viewport().is_size_override_enabled():
+		vp_size = get_viewport().get_size_override()
+	var old_dist = ((_touches_info["target"] - (vp_size / 2.0))*(zoom-Vector2(zoom_factor, zoom_factor)))
+	var new_dist = ((_touches_info["target"] - (vp_size / 2.0))*zoom)
+	var cam_need_move = old_dist - new_dist
+	self.position += cam_need_move
 	
 	#var to_print = "od.x %f, t.x %f, vp.x %f, zoom.x %f, fac %f, move.x(%f)" % [
 	#	old_dist.x, _touches_info["target"].x, vp_size.x, zoom.x, zoom_factor, cam_need_move.x]
