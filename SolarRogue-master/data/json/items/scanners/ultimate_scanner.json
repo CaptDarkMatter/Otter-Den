@@ -1,0 +1,43 @@
+{
+	"name_id":"Ultimate Scanner",
+	"type":"scanner",
+	"sprite": "scanner",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[544,160,64,64]
+	},
+	"equipment": {
+		"slot":"scanner",
+		"volume":10.0,
+		"equip_ap":3.0,
+		"unequip_ap":3.0
+	},
+	"scanning": {
+		"radius":1,
+		"fully_mapped":true,
+		"level":4,
+		"detection_bonus":1.0
+	},
+	"recyclable": {
+		"energy": 5000
+	},
+	"description": {
+		"text":"This unique artifact seems to have been built by an ancient race using lost technology. It seems to be able to see everywhere at once using quantum entanglement.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"},
+				{"name":"Equip Turn", "value":"{equipment.equip_ap}"},
+				{"name":"Mount Point", "value":"Scanner"}
+			]
+		},
+		"Scanning": {
+			"min_level":0,
+			"fields": [
+				{"name":"Radius", "value":"Monstrous"},
+				{"name":"Level", "value":"{scanning.level}"},
+				{"name":"Special", "value":"Unique Radar"}
+			]
+		}
+	}
+}

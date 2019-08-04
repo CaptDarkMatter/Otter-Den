@@ -1,0 +1,26 @@
+{
+	"name_id":"Oxygen",
+	"type":"food",
+	"sprite":"oxygen",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[896,128,128,128]
+	},
+	"equipment": {
+		"slot":"cargo",
+		"volume":2.0,
+		"stackable":true
+	},
+	"recyclable": {
+		"energy": 600
+	},
+	"description": {
+		"text":"Oxygen is a highly reactive nonmetal, and an oxidizing agent that readily forms oxides. It is a colorless and odorless diatomic gas.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"}
+			]
+		}
+	}
+}

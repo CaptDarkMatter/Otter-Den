@@ -1,0 +1,259 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://data/theme/default_ui_text.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/GUI/DialogWindowBaseV2.gd" type="Script" id=2]
+[ext_resource path="res://data/styles/GUI_bg.tres" type="StyleBox" id=3]
+[ext_resource path="res://data/textures/dialog_atlas.png" type="Texture" id=4]
+[ext_resource path="res://data/sounds/sfx/btn/hover2.wav" type="AudioStream" id=5]
+[ext_resource path="res://data/sounds/sfx/btn/click.wav" type="AudioStream" id=6]
+
+[node name="base" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -457.0
+margin_bottom = -479.0
+rect_pivot_offset = Vector2( 692, -89 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="Layouts" type="Control" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DoubleTitle" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 107, 116 )
+patch_margin_left = 6
+patch_margin_top = 47
+patch_margin_right = 7
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Double" type="NinePatchRect" parent="Layouts"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 109, 0, 107, 116 )
+patch_margin_left = 6
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="DoubleBottom" type="Control" parent="Layouts"]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Left" type="Panel" parent="Layouts/DoubleBottom"]
+anchor_bottom = 1.0
+margin_right = 61.0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="Left" type="NinePatchRect" parent="Layouts/DoubleBottom/Left"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 218, 0, 91, 88 )
+patch_margin_left = 6
+patch_margin_top = 50
+patch_margin_right = 7
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Right" type="Control" parent="Layouts/DoubleBottom"]
+margin_left = 61.0
+margin_right = 823.0
+margin_bottom = 241.0
+
+[node name="Right" type="Panel" parent="Layouts/DoubleBottom/Right"]
+anchor_right = 1.0
+margin_bottom = 48.0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="Patch" type="NinePatchRect" parent="Layouts/DoubleBottom/Right"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 312, 0, 131, 88 )
+patch_margin_left = 3
+patch_margin_top = 51
+patch_margin_right = 7
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Single" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 449, 0, 63, 92 )
+patch_margin_left = 6
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="SingleTitle" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 444, 94, 68, 92 )
+patch_margin_left = 6
+patch_margin_top = 47
+patch_margin_right = 7
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="SingleTitleOk" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 197, 122, 185, 98 )
+patch_margin_left = 160
+patch_margin_top = 46
+patch_margin_right = 4
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="SingleTitleCancel" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 197, 122, 185, 98 )
+patch_margin_left = 4
+patch_margin_top = 46
+patch_margin_right = 159
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="SingleTitleOkCancel" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 3, 336, 372, 98 )
+patch_margin_left = 162
+patch_margin_top = 46
+patch_margin_right = 159
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="DoubleTitleOk" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 119, 191, 104 )
+patch_margin_left = 160
+patch_margin_top = 47
+patch_margin_right = 23
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="DoubleTitleCancel" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 119, 191, 104 )
+patch_margin_left = 13
+patch_margin_top = 47
+patch_margin_right = 162
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="DoubleTitleOkCancel" type="NinePatchRect" parent="Layouts"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 226, 378, 104 )
+patch_margin_left = 167
+patch_margin_top = 47
+patch_margin_right = 166
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TitleUp" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+margin_left = 14.0
+margin_top = 13.0
+margin_right = -12.0
+margin_bottom = 38.0
+bbcode_enabled = true
+
+[node name="TitleBottom" type="RichTextLabel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -34.0
+margin_right = -6.0
+margin_bottom = -9.0
+
+[node name="Btn" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 30.0
+
+[node name="Ok" type="Button" parent="Btn"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 32.858
+margin_top = -57.404
+margin_right = 159.858
+margin_bottom = -6.40399
+text = "[o]k"
+
+[node name="Cancel" type="Button" parent="Btn"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -158.797
+margin_top = -57.307
+margin_right = -31.797
+margin_bottom = -6.30701
+text = "[esc]Cancel"
+
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+bus = "Sfx"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Sfx"
+
+[connection signal="mouse_entered" from="Btn/Ok" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Btn/Ok" to="." method="_on_Ok_pressed"]
+[connection signal="mouse_entered" from="Btn/Cancel" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Btn/Cancel" to="." method="_on_Cancel_pressed"]

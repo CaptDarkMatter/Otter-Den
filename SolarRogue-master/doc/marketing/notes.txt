@@ -1,0 +1,79 @@
+- Press kit :
+	- Release notes
+		- what is unique, cool about the game
+	- screenshots
+	- video/trailer
+	
+
+- Teaser Trailer
+	- Should be 1 min
+	- Derek Lieu graph of rising intensity
+		- pro trailer maker ? Derek Lieu - https://www.derek-lieu.com/
+	- Not a sale pitch, not a gameplay video... Show what is unique about your game (switching ships, space rogue ?)
+- reddit
+	- create a /r/solarrogue
+	- https://www.reddit.com/r/shamelessplug/top/?t=all
+	- https://www.reddit.com/r/sideproject
+	- gamedev, roguelikedev, roguelike, roguelites, indiegaming?
+- Twitter :
+	- #Screenshotsaturday
+	- #Gamedev, #indiedev, #indiegame ?
+- Youtube
+	- reach out to youtuber
+	- my channel
+- Facebook ?
+- Discord server about indie, gamedev ?
+- Website, blogpost, devblog
+	- Registration page, people can put their email and I should give thems heads up once every couple of months on major milestones
+- linkedin
+- twitch
+- Forums :
+	- https://pixelation.org/index.php ?
+- create ombarus steam account
+
+- Publish on :
+	- Steam
+	- Android
+	- iOS ?
+	- itch.io
+	- https://gdu.io/ ?
+	- humble store
+
+- influencer :
+	- https://www.facebook.com/spacegamejunkie - https://www.youtube.com/user/SpaceGameJunkie/videos
+	- https://www.youtube.com/watch?v=pZIzMdsNdFM (ask gamedev featured game of the week ?)
+	- https://www.youtube.com/watch?v=aKthW1TBpWU
+	- https://www.youtube.com/watch?v=Mi2oelZKNVA
+	- https://www.youtube.com/watch?v=vxF1osPkplA
+	- https://www.youtube.com/watch?v=TbFk96oQTEk ?
+	- https://www.youtube.com/watch?v=FUEIvpDmug8 ?
+
+
+- More traditional :
+	- Major website ?
+		- TouchArcade (for mobile)
+	- Google Ads
+	- GamePress ? (https://youtu.be/JpCMpLoJ8m4?t=410)
+	
+- Ignatus Zuk (Funded Hypr... could they be some sort of publisher ?)
+
+- https://github.com/mmccaff/PlacesToPostYourStartup
+- https://buildfire.com/free-app-promotion/
+
+
+99.5% of sharing happen on facebook, twitter, and some linkedin for business ?
+
+
+Marketing on Zero Budget GDC talk
+https://www.youtube.com/watch?v=l3QnovWYvwo
+
+Manage social presence (post on many platform at once ?)
+https://hootsuite.com/plans/free
+
+https://www.youtube.com/watch?v=DBPMeuYxoRk
+
+four p of marketing :
+	- Product : Understand what you're building
+	- Price : Business model (premium, freemium, f2p, etc.)
+	- Place : Distribution, Platform, etc.
+	- Promotion : PR, twitter, sharing, ads

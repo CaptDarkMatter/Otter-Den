@@ -1,0 +1,337 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/object.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/textures/space-sprite.png" type="Texture" id=2]
+
+[node name="ConverterOfYendor" type="Node2D"]
+
+[node name="converter" parent="." instance=ExtResource( 1 )]
+PreloadData = "res://data/json/items/misc/battleship_body.json"
+PreloadJSON = "{
+	\"equipment\":{\"disabled\":true},
+	\"cargo\": {
+			\"capacity\":500,
+			\"pickup_ap\":1.0,
+			\"drop_ap\":1.0,
+			\"volume_used\":100,
+			\"transferable\":true,
+			\"content\":[
+				{\"src\":\"data/json/items/converters/converter_yendor.json\", \"count\":1}
+			]
+		},
+	\"mounts\": {}
+}"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="converter"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1280, 384, 128, 128 )
+
+[node name="human_battleship" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 0, -128 )
+PreloadData = "res://data/json/ships/human/battleship.json"
+PreloadJSON = "{
+	\"ai\": {
+		\"pathfinding\":\"wait\"
+	}
+}"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="human_battleship"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1280, 256, 128, 128 )
+
+[node name="human_frigate" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 384, -256 )
+PreloadData = "res://data/json/ships/human/frigate.json"
+PreloadJSON = "{
+	\"ai\": {
+		\"pathfinding\":\"wait\"
+	}
+}"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="human_frigate"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 896, 256, 128, 128 )
+
+[node name="jerg_battleship" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 128, 128 )
+PreloadData = "res://data/json/ships/jerg/battleship.json"
+PreloadJSON = "{
+	\"ai\": {
+		\"pathfinding\":\"wait\"
+	}
+}"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="jerg_battleship"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1408, 256, 128, 128 )
+
+[node name="jerg_frigate" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 0, 512 )
+PreloadData = "res://data/json/ships/jerg/frigate.json"
+PreloadJSON = "{
+	\"ai\": {
+		\"pathfinding\":\"wait\"
+	}
+}"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="jerg_frigate"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1024, 256, 128, 128 )
+
+[node name="vorg_battleship" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( -128, 128 )
+PreloadData = "res://data/json/ships/vorg/battleship.json"
+PreloadJSON = "{
+	\"ai\": {
+		\"pathfinding\":\"wait\"
+	}
+}"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="vorg_battleship"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1536, 256, 128, 128 )
+
+[node name="vorg_frigate" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( -384, -256 )
+PreloadData = "res://data/json/ships/vorg/frigate.json"
+PreloadJSON = "{
+	\"ai\": {
+		\"pathfinding\":\"wait\"
+	}
+}"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="vorg_frigate"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1152, 256, 128, 128 )
+
+[node name="debris01" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( -128, -768 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris01"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris02" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 128, -640 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris02"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris03" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 768, -1024 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris03"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris04" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( -1024, -384 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris04"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris05" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 1152, 768 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris05"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris06" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( -512, 896 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris06"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris07" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( -1152, 384 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris07"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris08" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 1664, -256 )
+PreloadData = "res://data/json/items/misc/probe_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris08"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1664, 384, 128, 128 )
+
+[node name="debris09" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 1024, -512 )
+PreloadData = "res://data/json/items/misc/scout_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris09"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 512, 384, 128, 128 )
+
+[node name="debris10" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( -768, 0 )
+PreloadData = "res://data/json/items/misc/scout_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris10"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 512, 384, 128, 128 )
+
+[node name="debris11" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 128, 1152 )
+PreloadData = "res://data/json/items/misc/scout_body.json"
+base_attributes = {
+
+}
+modified_attributes = {
+
+}
+
+[node name="Sprite" type="Sprite" parent="debris11"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 512, 384, 128, 128 )
+

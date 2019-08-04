@@ -1,0 +1,26 @@
+{
+	"name_id":"A Battleship Hull Relic",
+	"type":"battleship_hull",
+	"sprite":"battleship_body",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[1280,384,128,128]
+	},
+	"equipment": {
+		"slot":"cargo",
+		"volume":190.0,
+		"stackable":false
+	},
+	"recyclable": {
+		"energy": 750
+	},
+	"description": {
+		"text":"The remains of this battleship hull are still in suprisingly good shape. They could be used as a scaffold for a new Battleship.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"}
+			]
+		}
+	}
+}

@@ -1,0 +1,159 @@
+{
+	"name_id":"Matter-to-Energy Converter MK2",
+	"type":"converter",
+	"sprite":"converter",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[288,160,64,64]
+	},
+	"equipment": {
+		"slot":"converter",
+		"volume":20.0,
+		"equip_ap":3.0,
+		"unequip_ap":3.0
+	},
+	"converter": {
+		"maximum_energy":40000,
+		"recipes": [
+			{
+				"name": "Recycle Energy",
+				"icon": {
+					"texture":"data/textures/space-sprite.png",
+				    "region":[256,0,128,128]
+				},
+				"requirements": [{"type":"recyclable", "amount":1}], 
+				"produce":"energy",
+				"ap_cost":1.0,
+				"amount":1500
+			},
+			{
+				"name": "Missile",
+				"requirements":[{"type":"energy", "amount":500}], 
+				"produce":"data/json/items/weapons/missile.json",
+				"ap_cost":0.5,
+				"amount":1
+			},
+			{
+				"name": "Torpedo",
+				"requirements":[{"type":"energy", "amount":550}], 
+				"produce":"data/json/items/weapons/torpedo.json",
+				"ap_cost":0.7,
+				"amount":1
+			},
+			{
+				"name": "Probe Ship",
+				"requirements":[{"type":"energy", "amount":1500}, {"type":"probe_hull", "amount":1}], 
+				"produce":"data/json/ships/human/player_probe.json",
+				"ap_cost":5.0,
+				"amount":1
+			},
+			{
+				"name": "(Starting) Human Scout",
+				"requirements":[
+					{"type":"energy", "amount":1800},
+					{"type":"scout_hull", "amount":1}
+				],
+				"produce":"data/json/ships/human/player_scout.json",
+				"ap_cost":6.0,
+				"amount":1
+			},
+			{
+				"name": "Human Bomber",
+				"requirements":[
+					{"type":"energy", "amount":2000},
+					{"type":"scout_hull", "amount":2}
+				],
+				"produce":"data/json/ships/human/player_bomber.json",
+				"ap_cost":6.0,
+				"amount":1
+			},
+			{
+				"name": "Human Frigate",
+				"requirements":[{"type":"energy", "amount":2500}, {"type":"frigate_hull", "amount":1}], 
+				"produce":"data/json/ships/human/player_frigate.json",
+				"ap_cost":7.0,
+				"amount":1
+			},
+			{
+				"name": "Human Battleship",
+				"requirements":[
+					{"type":"energy", "amount":7500},
+					{"type":"battleship_hull", "amount":1}
+				],
+				"produce":"data/json/ships/human/player_battleship.json",
+				"ap_cost":8.0,
+				"amount":1
+			},
+			{
+				"name": "Missile", 
+				"requirements":[{"type":"energy", "amount":500}], 
+				"produce":"data/json/items/weapons/missile.json",
+				"ap_cost":0.5,
+				"amount":1
+			},
+			{
+				"name": "Solar Array", 
+				"requirements":[{"type":"energy", "amount":2000}, {"type":"utility", "amount":2}], 
+				"produce":"data/json/items/utilities/solar_array.json",
+				"ap_cost":5.0,
+				"amount":1
+			},
+			{
+				"name": "Gravitic Compactor", 
+				"requirements":[{"type":"energy", "amount":2000}, {"type":"utility", "amount":2}], 
+				"produce":"data/json/items/utilities/gravitic_compactor.json",
+				"ap_cost":5.0,
+				"amount":1
+			},
+			{
+				"name": "Small Power Amplifier", 
+				"requirements":[{"type":"energy", "amount":2000}, {"type":"utility", "amount":2}], 
+				"produce":"data/json/items/utilities/power_amplifier.json",
+				"ap_cost":5.0,
+				"amount":1
+			},
+			{
+				"name": "Laser Turret MK1", 
+				"requirements":[{"type":"energy", "amount":2000}, {"type":"weapon", "amount":1}], 
+				"produce":"data/json/items/weapons/laser_turret_mk1.json",
+				"ap_cost":6.0,
+				"amount":1
+			},
+			{
+				"name": "Missile Launcher MK1", 
+				"requirements":[{"type":"energy", "amount":2000}, {"type":"weapon", "amount":1}], 
+				"produce":"data/json/items/weapons/missile_launcher_mk1.json",
+				"ap_cost":6.0,
+				"amount":1
+			},
+			{
+				"name": "Torpedo Launcher MK1", 
+				"requirements":[{"type":"energy", "amount":2000}, {"type":"weapon", "amount":1}], 
+				"produce":"data/json/items/weapons/torpedo_launcher_mk1.json",
+				"ap_cost":6.0,
+				"amount":1
+			}
+		]
+	},
+	"recyclable": {
+		"energy": 2000
+	},
+	"description": {
+		"text":"A handy device that can convert any matter into energy and vice-versa. More advanced blueprints require military grade converter.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"},
+				{"name":"Equip Turn", "value":"{equipment.equip_ap}"},
+				{"name":"Mount Point", "value":"Converter"}
+			]
+		},
+		"Converter": {
+			"min_level":0,
+			"fields": [
+				{"name":"Maximum Energy Reserve", "value":"{converter.maximum_energy}"},
+				{"name":"Recipes", "value":"11"}
+			]
+		}
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"name_id":"Missile",
+	"type":"ammo",
+	"sprite_choice":[
+		"missile"
+	],
+	"icon": [{
+		"texture":"data/textures/space-sprite.png",
+		"region":[384,0,128,128]
+	}],
+	"equipment": {
+		"slot":"cargo",
+		"volume":0.5,
+		"stackable":true
+	},
+	"recyclable": {
+		"energy": 200
+	},
+	"description": {
+		"text":"Ammo for the Missile Launcher. Missiles have four system components: targeting, flight system, engine, and warhead",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"}
+			]
+		}
+	}
+}

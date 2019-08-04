@@ -1,0 +1,26 @@
+{
+	"name_id":"Probe Hull Relic",
+	"type":"probe_hull",
+	"sprite":"probe_body",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[1664,384,128,128]
+	},
+	"equipment": {
+		"slot":"cargo",
+		"volume":150.0,
+		"stackable":false
+	},
+	"recyclable": {
+		"energy": 200
+	}
+},
+	"description": {
+		"text":"The remains of this probe hull are still in suprisingly good shape. They could be used as a scaffold for a new Probe, but why ?",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"}
+			]
+		}
+	}

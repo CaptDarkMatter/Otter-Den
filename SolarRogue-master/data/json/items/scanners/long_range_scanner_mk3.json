@@ -1,0 +1,43 @@
+{
+	"name_id":"Long Range Scanner MK3",
+	"type":"scanner",
+	"sprite": "scanner",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[544,160,64,64]
+	},
+	"equipment": {
+		"slot":"scanner",
+		"volume":10.0,
+		"equip_ap":3.0,
+		"unequip_ap":3.0
+	},
+	"scanning": {
+		"radius":8,
+		"partial_reveal_type": ["planet", "wormhole", "sun", "ship", "weapon", "food", "utility", "hull", "converter", "consumable", "scanner", "shield", "ammo"],
+		"level":2,
+		"detection_bonus":0.06
+	},
+	"recyclable": {
+		"energy": 2500
+	},
+	"description": {
+		"text":"This advanced Radar can detect minute gravitational shifts within a solar system.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"},
+				{"name":"Equip Turn", "value":"{equipment.equip_ap}"},
+				{"name":"Mount Point", "value":"Scanner"}
+			]
+		},
+		"Scanning": {
+			"min_level":0,
+			"fields": [
+				{"name":"Radius", "value":"{scanning.radius}"},
+				{"name":"Level", "value":"{scanning.level}"},
+				{"name":"Special", "value":"Detect Small Objects"}
+			]
+		}
+	}
+}

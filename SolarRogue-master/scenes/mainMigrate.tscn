@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Behaviors/PlayerBehavior.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Behaviors/AIBehavior.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Behaviors/LevelLoaderBehavior.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Behaviors/MovementBehavior.gd" type="Script" id=4]
+
+[node name="Root" type="Node"]
+
+[node name="Behaviors" type="Node" parent="."]
+
+[node name="Player" type="Node" parent="Behaviors"]
+script = ExtResource( 1 )
+levelLoaderNode = NodePath("../LevelLoader")
+
+[node name="AI" type="Node" parent="Behaviors"]
+script = ExtResource( 2 )
+
+[node name="LevelLoader" type="Node" parent="Behaviors"]
+script = ExtResource( 3 )
+
+[node name="Movement" type="Node" parent="Behaviors"]
+script = ExtResource( 4 )
+levelLoaderNode = NodePath("../LevelLoader")

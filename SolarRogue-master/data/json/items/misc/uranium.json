@@ -1,0 +1,26 @@
+{
+	"name_id":"Uranium",
+	"type":"food",
+	"sprite":"uranium",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[1024,128,128,128]
+	},
+	"equipment": {
+		"slot":"cargo",
+		"volume":2.0,
+		"stackable":true
+	},
+	"recyclable": {
+		"energy": 2500
+	},
+	"description": {
+		"text":"Uranium is a fissile isotope, which makes it widely used in nuclear power plants and nuclear weapons. In sufficient concentration, we can maintain a sustained nuclear chain reaction.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"}
+			]
+		}
+	}
+}

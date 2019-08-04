@@ -1,0 +1,41 @@
+{
+	"name_id":"Long Range Scanner",
+	"type":"scanner",
+	"sprite": "scanner",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[544,160,64,64]
+	},
+	"equipment": {
+		"slot":"scanner",
+		"volume":10.0,
+		"equip_ap":3.0,
+		"unequip_ap":3.0
+	},
+	"scanning": {
+		"radius":8,
+		"level":0,
+		"detection_bonus":0.01
+	},
+	"recyclable": {
+		"energy": 1500
+	},
+	"description": {
+		"text":"This extra-powerful radar extends beyond the average weapon range allowing us time to get into a flanking position before battle.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"},
+				{"name":"Equip Turn", "value":"{equipment.equip_ap}"},
+				{"name":"Mount Point", "value":"Scanner"}
+			]
+		},
+		"Scanning": {
+			"min_level":0,
+			"fields": [
+				{"name":"Radius", "value":"{scanning.radius}"},
+				{"name":"Level", "value":"{scanning.level}"}
+			]
+		}
+	}
+}

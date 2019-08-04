@@ -1,0 +1,26 @@
+{
+	"name_id":"A Frigate Hull Relic",
+	"type":"frigate_hull",
+	"sprite":"frigate_body",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[896,384,128,128]
+	},
+	"equipment": {
+		"slot":"cargo",
+		"volume":190.0,
+		"stackable":false
+	},
+	"recyclable": {
+		"energy": 600
+	},
+	"description": {
+		"text":"The remains of this frigate hull are still in suprisingly good shape. They could be used as a scaffold for a new Frigate.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"}
+			]
+		}
+	}
+}

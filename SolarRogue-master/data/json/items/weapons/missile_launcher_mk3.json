@@ -1,0 +1,51 @@
+{
+	"name_id":"Missile Launcher MK3",
+	"type":"weapon",
+	"sprite":"missile_launcher",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[160,160,64,64]
+	},
+	"animation": {
+		"shoot": "scenes/tileset_source/missile_fx.tscn"
+	},
+	"weapon_data": {
+		"base_dam":6.0,
+		"max_dam":9.0,
+		"ammo":"data/json/items/weapons/missile.json",
+		"fire_range":3.0,
+		"fire_pattern":"o",
+		"fire_energy_cost":150.0,
+		"fire_speed":0.5
+	},
+	"equipment": {
+		"slot":"weapon",
+		"volume":100.0,
+		"equip_ap":3.0,
+		"unequip_ap":3.0
+	},
+	"recyclable": {
+		"energy": 3000
+	},
+	"description": {
+		"text":"Launches a flurry of guided-missile to any target in the viscinity. Extra missile bays allow for stacked shooting and reloading, allowing near-continuous shooting.",
+		"Overview": {
+			"min_level":0,
+			"fields":[
+				{"name":"Cargo Volume", "value":"{equipment.volume}"},
+				{"name":"Equip Turn", "value":"{equipment.equip_ap}"},
+				{"name":"Mount Point", "value":"Weapon"}
+			]
+		},
+		"Weapon Stats": {
+			"min_level":0,
+			"fields": [
+				{"name":"Damage", "value":"{weapon_data.base_dam}~{weapon_data.max_dam}"},
+				{"name":"Range", "value":"{weapon_data.fire_range}"},
+				{"name":"Energy Cost", "value":"{weapon_data.fire_energy_cost}"},
+				{"name":"Speed", "value":"{weapon_data.fire_speed} turns"},
+				{"name":"Ammo", "value":"Missile"}
+			]
+		}
+	}
+}

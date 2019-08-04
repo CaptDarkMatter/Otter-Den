@@ -1,0 +1,55 @@
+{
+	"name_id":"A Jerg Battleship",
+	"type":"ship",
+	"sprite":"jerg_battleship",
+	"icon": {
+		"texture":"data/textures/space-sprite.png",
+		"region":[1408,256,128,128]
+	},
+	"boardable":true,
+	"mounts": {
+		"weapon": ["", "", ""],
+		"scanner": [""],
+		"converter": [""],
+		"utility":["", "", ""]
+	},
+	"destroyable": {
+		"hull":75
+	},
+	"moving": {
+		"speed":1.3,
+		"can_use_wormhole":true,
+		"energy_cost":7
+	},
+	"cargo": {
+		"capacity":1000,
+		"pickup_ap":1.0,
+		"drop_ap":1.0,
+		"transferable":true,
+		"content":[]
+	},
+	"converter": {
+		"stored_energy": 30000,
+		"base_ap_energy_cost":20
+	},
+	"description": {
+		"text":"Battleships are the most powerful type of warship. They have the most shields and weapons in the fleet but their size and mass makes them slow and expensive.",
+		"Overview": {
+			"min_level":0, 
+			"fields":[
+				{"name":"Max hull", "value":"{destroyable.hull}"},
+				{"name":"Speed", "value":"{moving.speed}"},
+				{"name":"Weapon mounts", "value":"3"},
+				{"name":"Shield mounts", "value":"0"},
+				{"name":"Utility mounts", "value":"3"}
+			]
+		},
+		"Status": {
+			"min_level":1,
+			"fields": [
+				{"name":"Current hull", "value":"{destroyable.current_hull}", "default":"{destroyable.hull}"},
+				{"name":"Current shield", "value":"{shield.current_hp}"}
+			]
+		}
+	}
+}
