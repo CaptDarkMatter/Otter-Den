@@ -17,10 +17,8 @@ gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2( -2.49973, -0.167801 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
-position = Vector2( -3.81104, 2.55676 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
