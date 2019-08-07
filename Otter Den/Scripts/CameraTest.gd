@@ -29,7 +29,7 @@ func _unhandled_input(event):
 		_touches.erase(event.index)
 	if event is InputEventScreenDrag:
 		_touches[event.index]["current"] = event
-		#update_pinch_gesture()
+		update_pinch_gesture()
 
 	# Handle Multi-touch using 'A' key and mouse event instead of Touch event	
 	pretend_multi_touch(event)
@@ -97,8 +97,8 @@ func do_multitouch_pan():
 #	if new_pos.y < 0 or new_pos.y > (bounds.y * tile_size):
 #		new_pos.y = self.position.y
 #
-#	_touches_info["total_pan"] += (self.position - new_pos).length()
-#	var move_trigger = 256.0
+	_touches_info["total_pan"] += (self.position - new_pos).length()
+	var move_trigger = 256.0
 #	if _touches_info["total_pan"] > move_trigger:
 #		BehaviorEvents.emit_signal("OnCameraDragged")
 
