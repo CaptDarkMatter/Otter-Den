@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/BehaviorEvents.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/CameraTest2.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Various Camera/BehaviorEvents.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Various Camera/CameraTest2.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg" type="Texture" id=3]
 [ext_resource path="res://Sprites/b9fda9c6f7163be448fe0f9b0d14a9db.png" type="Texture" id=4]
 
