@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/Various Camera/BehaviorEvents.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game Scene.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Various Camera/CameraTest2.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg" type="Texture" id=3]
 [ext_resource path="res://Sprites/b9fda9c6f7163be448fe0f9b0d14a9db.png" type="Texture" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -700.474, 1.58069, 0, 0, 0, 0, -494.421, -0.788513, 0, 0, 0, 0, -482.58, -107.368, 0, 0, 0, 0, -335.737, -109.737, 0, 0, 0, 0, -340.474, 72.632, 0, 0, 0, 0, 0.579285, 72.6307, 0, 0, 0, 0, -4.15826, -105.001, 0, 0, 0, 0, 102.421, -109.738, 0, 0, 0, 0, 100.053, 124.736, 0, 0, 0, 0, 223.211, 138.946, 0, 0, 0, 0, 227.947, -116.844, 0, 0, 0, 0, 367.684, -123.95, 0, 0, 0, 0, 362.948, -0.791565, 0, 0, 0, 0, 557.158, -0.792297 )
+}
 
 [node name="Game Scene" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,15 +17,12 @@ script = ExtResource( 1 )
 current = true
 script = ExtResource( 2 )
 shipPath = NodePath("../Ship")
-[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/Game Scene.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/Ship.tscn" type="PackedScene" id=3]
+[node name="Background" type="Node" parent="."]
+editor/display_folded = true
 
-[node name="Game Scene" type="Node2D"]
-script = ExtResource( 1 )
-
+[node name="Sprite" type="Sprite" parent="Background"]
+scale = Vector2( 4.57627, 5.42373 )
 texture = ExtResource( 3 )
 centered = false
 
@@ -31,8 +33,7 @@ rotation = 1.5708
 z_index = 1
 
 [node name="Sprite" type="Sprite" parent="Ship"]
-texture = ExtResource( 2 )
-centered = false
+texture = ExtResource( 4 )
 
-[node name="Ship" parent="." instance=ExtResource( 3 )]
-position = Vector2( 600, 978.659 )
+[node name="Path2D" type="Path2D" parent="Ship"]
+curve = SubResource( 1 )

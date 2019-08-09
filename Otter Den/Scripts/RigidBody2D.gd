@@ -2,8 +2,8 @@ extends RigidBody2D
 var ship = preload("res://Scenes/Ship.tscn").instance()
 var targets
 var targetLocation
-var stupid = preload("res://Dumbass.tscn").instance()
-var dumbass = preload("res://Dumbass.tscn").instance()
+var stupid = preload("res://Scenes/Dumbass.tscn").instance()
+var dumbass = preload("res://Scenes/Dumbass.tscn").instance()
 #var sx = 603
 #var sy = 960
 var v = 200

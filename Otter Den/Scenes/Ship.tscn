@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sprites/b9fda9c6f7163be448fe0f9b0d14a9db.png" type="Texture" id=1]
-[ext_resource path="res://Stupid.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Dumbass.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Stupid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Dumbass.tscn" type="PackedScene" id=3]
+
+
 
 [node name="Ship" type="Node2D"]
 rotation = 1.5708
