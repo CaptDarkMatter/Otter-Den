@@ -2,10 +2,13 @@
 
 [ext_resource path="res://Scripts/Frog.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/RigidBody2D.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Frog2.jpg" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 84.4815, 91.7874 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/Frog2.jpg-94e0b2d5d175706b18366dac9b8b74cb.stex"
 
 [node name="Frog" type="Node2D"]
 z_index = 3
@@ -21,4 +24,4 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
+texture = SubResource( 2 )

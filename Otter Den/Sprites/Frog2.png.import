@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg-4535d7ee57a15f5df56305aec75ca19e.stex"
+path="res://.import/Frog2.png-84d732887715566720f7e53e51dc308f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg"
-dest_files=[ "res://.import/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg-4535d7ee57a15f5df56305aec75ca19e.stex" ]
+source_file="res://Sprites/Frog2.png"
+dest_files=[ "res://.import/Frog2.png-84d732887715566720f7e53e51dc308f.stex" ]
 
 [params]
 
