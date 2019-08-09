@@ -12,12 +12,15 @@ script = ExtResource( 1 )
 current = true
 script = ExtResource( 2 )
 shipPath = NodePath("../Ship")
+[gd_scene load_steps=4 format=2]
 
-[node name="Background" type="Node" parent="."]
-editor/display_folded = true
+[ext_resource path="res://Scripts/Game Scene.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/13eedf81b0fbf9e3d4989e3ccb0ecee7.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/Ship.tscn" type="PackedScene" id=3]
 
-[node name="Sprite" type="Sprite" parent="Background"]
-scale = Vector2( 4.57627, 5.42373 )
+[node name="Game Scene" type="Node2D"]
+script = ExtResource( 1 )
+
 texture = ExtResource( 3 )
 centered = false
 
@@ -28,4 +31,8 @@ rotation = 1.5708
 z_index = 1
 
 [node name="Sprite" type="Sprite" parent="Ship"]
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Ship" parent="." instance=ExtResource( 3 )]
+position = Vector2( 600, 978.659 )
