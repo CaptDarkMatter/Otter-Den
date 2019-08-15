@@ -2,24 +2,17 @@ extends Camera2D
 
 export(float) var max_zoom = 4.0
 export(float) var min_zoom = 0.25
-export(NodePath) var shipPath
 
 var _touches = {} # for pinch zoom and drag with multiple fingers
 var _touches_info = {"num_touch_last_frame":0, "radius":0, "total_pan":0}
 var _debug_cur_touch = 0
-var ship
-#----------------------------------------------------------------------------------------------------------------------------
-func _ready():
-	ship = get_node(shipPath)
-	self.position = ship.position
-	pass
 #Handle Zooming--------------------------------------------------------------------------------------------------------------
 func _zoom_camera(dir):
 	zoom += Vector2(0.1, 0.1) * dir
 	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
 	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
 #----------------------------------------------------------------------------------------------------------------------------
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	# Handle actual Multi-touch from capable devices
 	if event is InputEventScreenTouch and event.pressed == true:
 		_touches[event.index] = {"start":event, "current":event}
@@ -29,7 +22,7 @@ func _unhandled_input(event):
 		_touches[event.index]["current"] = event
 		update_pinch_gesture()
 
-	# Handle Multi-touch using 'A' key and mouse event instead of Touch event	
+	# Handle Multi-touch using 'A' key and mouse event instead of Touch event
 	pretend_multi_touch(event)
 
 	var key_str = ""
@@ -96,7 +89,6 @@ func pretend_multi_touch(event):
 
 	update_touch_info()
 	update_pinch_gesture()
-
 #----------------------------------------------------------------------------------------------------------------------------
 func update_pinch_gesture():
 	if _touches.size() < 2:

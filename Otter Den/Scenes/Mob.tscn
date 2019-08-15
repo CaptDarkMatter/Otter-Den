@@ -1,3 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Mob" type="Node"]
+[ext_resource path="res://Scripts/MobController.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Frog2.png" type="Texture" id=2]
+
+[node name="Mobs" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Frogs" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Frogs"]
+texture = ExtResource( 2 )
