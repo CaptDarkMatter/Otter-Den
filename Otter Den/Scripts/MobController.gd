@@ -1,26 +1,27 @@
 extends Node2D
 
-#onready var frogs : Node2D  = $Frogs
+export(NodePath) var mobSprite
+
 onready var path : PoolVector2Array
 
 var nav_2d
 var den
-var speed = 400.0
+var type : String
+var speed : float
 #speed will eventually be set by the mob itself. for now I have a defualt value.
 #----------------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
-#	path = nav_2d._create_path(self.global_position, den.global_position)
-	path = nav_2d._create_path(self.position, Vector2(0,550))
-	pass
+	TypeList()
+	path = nav_2d._create_path(self.position, den.position)
 #----------------------------------------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	if path.size() == 0:
 		return
 	else:
 		var move_distance = speed * delta
-		_move_along_path(move_distance)
+		move_along_path(move_distance)
 #----------------------------------------------------------------------------------------------------------------------------
-func _move_along_path(distance : float) -> void:
+func move_along_path(distance : float) -> void:
 	var start_pos = self.position
 	for i in range(path.size()):
 		var distance_to_next = start_pos.distance_to(path[0])
@@ -38,3 +39,38 @@ func _move_along_path(distance : float) -> void:
 		start_pos = path[0]
 		path.remove(0)
 #----------------------------------------------------------------------------------------------------------------------------
+func setType(var typeToSet : int):
+	type = get_node(mobSprite).typeList[typeToSet]
+	TypeList()
+#----------------------------------------------------------------------------------------------------------------------------
+func TypeList():
+	match type:
+		"frog1":
+			get_node(mobSprite).texture = get_node(mobSprite).frog1
+			get_node(mobSprite).subPlacer = 1
+			speed = 200.0
+		"frog2":
+			get_node(mobSprite).texture = get_node(mobSprite).frog2
+			get_node(mobSprite).subPlacer = 2
+			speed = 350.0
+		"frog3":
+			get_node(mobSprite).texture = get_node(mobSprite).frog3
+			get_node(mobSprite).subPlacer = 3
+
+		"wolf1":
+			get_node(mobSprite).texture = get_node(mobSprite).wolf1
+			get_node(mobSprite).subPlacer = 5
+		"wolf2":
+			get_node(mobSprite).texture = get_node(mobSprite).wolf2
+			get_node(mobSprite).subPlacer = 6
+		"wolf3":
+			get_node(mobSprite).texture = get_node(mobSprite).wolf3
+			get_node(mobSprite).subPlacer = 7
+		_:
+#			if its anything other than the types above then its dead. So this is where we kill it.
+			queue_free()
+#----------------------------------------------------------------------------------------------------------------------------
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.scancode == KEY_B:
+		get_node(mobSprite).subPlacer += -1
+		setType(get_node(mobSprite).subPlacer)
