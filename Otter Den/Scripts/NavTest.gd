@@ -8,6 +8,8 @@ func _ready():
 
 func _create_path(var start, var end):
 	var newPath = get_simple_path(start, end)
+#	path = newPath
+#	update()
 	return newPath
 
 #func _draw():

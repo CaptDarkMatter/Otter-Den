@@ -4,24 +4,27 @@ export(NodePath) var mobSprite
 
 onready var path : PoolVector2Array
 
+var gameController
 var nav_2d
 var den
 var type : String
 var speed : float
-#speed will eventually be set by the mob itself. for now I have a defualt value.
+var basic : bool
 #----------------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
 	TypeList()
-	path = nav_2d._create_path(self.position, den.position)
 #----------------------------------------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	if path.size() == 0:
+		if basic:
+			setType(0)
 		return
 	else:
 		var move_distance = speed * delta
 		move_along_path(move_distance)
 #----------------------------------------------------------------------------------------------------------------------------
 func move_along_path(distance : float) -> void:
+	get_node(mobSprite).look_at(path[0])
 	var start_pos = self.position
 	for i in range(path.size()):
 		var distance_to_next = start_pos.distance_to(path[0])
@@ -33,8 +36,6 @@ func move_along_path(distance : float) -> void:
 			self.position = path[0]
 			set_process(false)
 			break
-
-# this handles overshooting a point along the path. Basically allows it to backtrack if it goes too fast.
 		distance -= distance_to_next
 		start_pos = path[0]
 		path.remove(0)
@@ -49,10 +50,14 @@ func TypeList():
 			get_node(mobSprite).texture = get_node(mobSprite).frog1
 			get_node(mobSprite).subPlacer = 1
 			speed = 200.0
+			basic = true
+			path = nav_2d._create_path(self.position, den.position)
 		"frog2":
 			get_node(mobSprite).texture = get_node(mobSprite).frog2
 			get_node(mobSprite).subPlacer = 2
 			speed = 350.0
+			basic = true
+			path = nav_2d._create_path(self.position, den.position)
 		"frog3":
 			get_node(mobSprite).texture = get_node(mobSprite).frog3
 			get_node(mobSprite).subPlacer = 3
@@ -72,5 +77,8 @@ func TypeList():
 #----------------------------------------------------------------------------------------------------------------------------
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.scancode == KEY_B:
-		get_node(mobSprite).subPlacer += -1
-		setType(get_node(mobSprite).subPlacer)
+		take_damage()
+
+func take_damage():
+	get_node(mobSprite).subPlacer += -1
+	setType(get_node(mobSprite).subPlacer)

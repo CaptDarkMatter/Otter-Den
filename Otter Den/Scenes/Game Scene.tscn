@@ -12,9 +12,7 @@ current = true
 script = ExtResource( 2 )
 
 [node name="Background" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="Background"]
 scale = Vector2( 4.57627, 5.42373 )
 texture = ExtResource( 3 )
-centered = false

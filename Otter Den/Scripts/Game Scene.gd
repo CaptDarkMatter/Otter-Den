@@ -5,7 +5,7 @@ onready var newShip = ship.instance()
 
 func _ready():
 	set_process_input(true)
-	newShip.position = Vector2(540,960)
+	newShip.position = Vector2(0,0)
 	add_child(newShip)
 	get_node("Camera2D").position = newShip.position
 	print("Press A to spawn some frogs. Press B to hurt the frogs")
