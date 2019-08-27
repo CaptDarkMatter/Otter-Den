@@ -2,26 +2,17 @@ extends Camera2D
 
 export(float) var max_zoom = 4.0
 export(float) var min_zoom = 0.25
-#export(NodePath) var levelLoaderNode
-#
-#var levelLoaderRef
-#
+
 var _touches = {} # for pinch zoom and drag with multiple fingers
 var _touches_info = {"num_touch_last_frame":0, "radius":0, "total_pan":0}
 var _debug_cur_touch = 0
-#
-#func _ready():
-#	levelLoaderRef = get_node(levelLoaderNode)
-#	var p = levelLoaderRef.objByType["player"][0]
-#	self.position = p.position
-#	BehaviorEvents.connect("OnMovement", self, "OnMovement_callback")
-#	BehaviorEvents.connect("OnLevelLoaded", self, "OnLevelLoaded_callback")
-#	BehaviorEvents.connect("OnTransferPlayer", self, "OnTransferPlayer_callback")
-#
-func _unhandled_input(event):
-#	if levelLoaderRef == null:
-#		return
-
+#Handle Zooming--------------------------------------------------------------------------------------------------------------
+func _zoom_camera(dir):
+	zoom += Vector2(0.1, 0.1) * dir
+	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
+	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
+#----------------------------------------------------------------------------------------------------------------------------
+func _unhandled_input(event: InputEvent) -> void:
 	# Handle actual Multi-touch from capable devices
 	if event is InputEventScreenTouch and event.pressed == true:
 		_touches[event.index] = {"start":event, "current":event}
@@ -31,7 +22,7 @@ func _unhandled_input(event):
 		_touches[event.index]["current"] = event
 		update_pinch_gesture()
 
-	# Handle Multi-touch using 'A' key and mouse event instead of Touch event	
+	# Handle Multi-touch using 'A' key and mouse event instead of Touch event
 	pretend_multi_touch(event)
 
 	var key_str = ""
@@ -45,29 +36,7 @@ func _unhandled_input(event):
 	# Wheel Down Event
 	elif event.is_action_pressed("zoom_out") or key_str == '-':
 		_zoom_camera(1)
-
-# Zoom Camera
-func _zoom_camera(dir):
-	zoom += Vector2(0.1, 0.1) * dir
-	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
-	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
-#
-#func OnMovement_callback(obj, dir):
-#	if obj.get_attrib("type") == "player":
-#		self.position = obj.position
-#
-#func OnLevelLoaded_callback():
-#	OnMovement_callback(levelLoaderRef.objByType["player"][0], null)
-#
-#func OnTransferPlayer_callback(old_player, new_player):
-#	OnMovement_callback(new_player, null)
-#
-#func _on_ZoomIn_pressed():
-#	_zoom_camera(-1)
-#
-#func _on_ZoomOut_pressed():
-#	_zoom_camera(1)
-#
+#----------------------------------------------------------------------------------------------------------------------------
 func update_touch_info():
 	if _touches.size() <= 0:
 		_touches_info.num_touch_last_frame = _touches.size()
@@ -84,7 +53,7 @@ func update_touch_info():
 	_touches_info.num_touch_last_frame = _touches.size()
 
 	do_multitouch_pan()
-
+#----------------------------------------------------------------------------------------------------------------------------
 func do_multitouch_pan():
 	var diff = _touches_info.target - _touches_info.cur_pos
 
@@ -96,16 +65,11 @@ func do_multitouch_pan():
 #		new_pos.x = self.position.x
 #	if new_pos.y < 0 or new_pos.y > (bounds.y * tile_size):
 #		new_pos.y = self.position.y
-#
-	_touches_info["total_pan"] += (self.position - new_pos).length()
-	var move_trigger = 256.0
-#	if _touches_info["total_pan"] > move_trigger:
-#		BehaviorEvents.emit_signal("OnCameraDragged")
 
 	self.position = new_pos
 
 	_touches_info.target = _touches_info.cur_pos
-
+#----------------------------------------------------------------------------------------------------------------------------
 func pretend_multi_touch(event):
 	if event is InputEventKey and event.scancode == KEY_A:
 		if event.pressed:
@@ -125,8 +89,7 @@ func pretend_multi_touch(event):
 
 	update_touch_info()
 	update_pinch_gesture()
-
-
+#----------------------------------------------------------------------------------------------------------------------------
 func update_pinch_gesture():
 	if _touches.size() < 2:
 		_touches_info["radius"] = 0
@@ -153,7 +116,3 @@ func update_pinch_gesture():
 	var new_dist = ((_touches_info["target"] - (vp_size / 2.0))*zoom)
 	var cam_need_move = old_dist - new_dist
 	self.position += cam_need_move
-	
-	#var to_print = "od.x %f, t.x %f, vp.x %f, zoom.x %f, fac %f, move.x(%f)" % [
-	#	old_dist.x, _touches_info["target"].x, vp_size.x, zoom.x, zoom_factor, cam_need_move.x]
-	#BehaviorEvents.emit_signal("OnLogLine", to_print)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Frog2.jpg-94e0b2d5d175706b18366dac9b8b74cb.stex"
+path="res://.import/shipSprite.png-9d325dfa53e2a44e54ae188d2662e7a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Frog2.jpg"
-dest_files=[ "res://.import/Frog2.jpg-94e0b2d5d175706b18366dac9b8b74cb.stex" ]
+source_file="res://Sprites/shipSprite.png"
+dest_files=[ "res://.import/shipSprite.png-9d325dfa53e2a44e54ae188d2662e7a6.stex" ]
 
 [params]
 
