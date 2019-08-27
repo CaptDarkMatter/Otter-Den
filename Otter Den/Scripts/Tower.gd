@@ -13,12 +13,12 @@ func control(delta):
 		shoot()
 
 func shoot():
+	print("start")
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
 		var dir = Vector2(1,0).rotated($Turret.global_rotation)
 		emit_signal("shoot", projectile, $Turret/Muzzle.global_position, dir)
-		
 	pass
 
 func _ready():

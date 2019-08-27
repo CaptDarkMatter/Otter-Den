@@ -22,3 +22,4 @@ texture = ExtResource( 3 )
 position = Vector2( -130, 0 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 3
+[connection signal="shoot" from="Tower" to="." method="_on_Tower_shoot"]
