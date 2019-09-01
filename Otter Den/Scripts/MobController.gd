@@ -4,6 +4,7 @@ export(NodePath) var mobSprite
 
 onready var path : PoolVector2Array
 
+# warning-ignore:unused_class_variable
 var gameController
 var nav_2d
 var den
@@ -26,6 +27,7 @@ func _process(delta: float) -> void:
 func move_along_path(distance : float) -> void:
 	get_node(mobSprite).look_at(path[0])
 	var start_pos = self.position
+# warning-ignore:unused_variable
 	for i in range(path.size()):
 		var distance_to_next = start_pos.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0.0:
@@ -74,6 +76,9 @@ func TypeList():
 		_:
 #			if its anything other than the types above then its dead. So this is where we kill it.
 			queue_free()
+	var newShape = RectangleShape2D.new()
+	newShape.set_extents(Vector2(get_node(mobSprite).texture.get_size().x / 2, get_node(mobSprite).texture.get_size().y / 2))
+	get_node("Mob2D/MobShape2D").set_shape(newShape)
 #----------------------------------------------------------------------------------------------------------------------------
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.scancode == KEY_B:

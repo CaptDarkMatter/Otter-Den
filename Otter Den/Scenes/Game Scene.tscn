@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Scripts/Game Scene.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Various Camera/CameraTest2.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/background.jpg" type="Texture" id=3]
-[ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Bomb_Tower_2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/background.jpg" type="Texture" id=4]
 
 [node name="Game Scene" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,13 +12,13 @@ script = ExtResource( 1 )
 current = true
 script = ExtResource( 2 )
 
+[node name="Cursor" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+
 [node name="Background" type="Node" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Background"]
 scale = Vector2( 4.57627, 5.42373 )
-texture = ExtResource( 3 )
-
-[node name="Tower" parent="." instance=ExtResource( 4 )]
-position = Vector2( -130, 0 )
-scale = Vector2( 1.5, 1.5 )
-z_index = 3
+z_index = -2
+texture = ExtResource( 4 )

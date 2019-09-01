@@ -1,7 +1,9 @@
 extends Node2D
 var mob = preload("res://Scenes/Mob.tscn")
 var ship = preload("res://Scenes/Ship.tscn")
+var tower = preload("res://Scenes/Tower.tscn")
 onready var newShip = ship.instance()
+onready var curHold : bool = false
 
 func _ready():
 	set_process_input(true)
@@ -11,11 +13,28 @@ func _ready():
 	print("Press A to spawn some frogs. Press B to hurt the frogs")
 
 func _input(event: InputEvent) -> void:
-	if not event is InputEventKey:
-		return
+#	if not event is InputEventKey:
+#		return
 	if event is InputEventKey and event.pressed and event.scancode == KEY_A:
 		enemy_spawn(20, "frog2")
-		pass
+#this section of the input is just a stopgap for when the UI is implemented into the code. Will be removed later.
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_S:
+		if curHold:
+			curHold = false
+			get_node("Cursor").hide()
+		else: 
+			curHold = true 
+			get_node("Cursor").show()
+	if curHold and Input.is_action_just_pressed("mouse_left"):
+#		print("mouse!")
+		var spawnTower = tower.instance()
+		spawnTower.position = get_node("Cursor").position
+		add_child(spawnTower)
+
+# warning-ignore:unused_argument
+func _process(delta):
+	if curHold:
+		get_node("Cursor").position = get_global_mouse_position()
 
 func SpawnMob(var spawnTarget : Vector2, var spawnType : String):
 	var spawnMob = mob.instance()
@@ -28,9 +47,9 @@ func SpawnMob(var spawnTarget : Vector2, var spawnType : String):
 func enemy_spawn(var enemyNumber, var enemyType):
 	var spawners = []
 	spawners = [Vector2(-540,-960),Vector2(540,-960),Vector2(-540,960),Vector2(540,960)]
+# warning-ignore:unused_variable
 	for i in range(enemyNumber):
 		randomize()
 		var spawnerInst = rand_range(0,4)
 		SpawnMob(spawners[spawnerInst], enemyType)
 		yield(get_tree().create_timer(0.5),"timeout")
-		print("made a frog")
