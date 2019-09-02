@@ -28,7 +28,6 @@ func _on_Projectile_body_entered(body):
 		body.take_damage(damage)
 	pass # Replace with function body.
 
-
 func _on_Lifetime_timeout():
 	explode()
 	pass # Replace with function body.

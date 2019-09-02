@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/rotate.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/craparrow.jpg" type="Texture" id=3]
 
-
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1083.99, 2.48996, 1081.5, 1918.14, 929.42, 1394.72, 924.433, 1267.57, -2.99097, 1913.15, 131.635, 1392.22, -0.497925, -0.00311279, 129.142, 1267.57 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 2, 1, 4, 5 ), PoolIntArray( 5, 4, 6, 7 ), PoolIntArray( 6, 0, 3, 7 ) ]

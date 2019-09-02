@@ -4,6 +4,14 @@ export(NodePath) var mobSprite
 
 onready var path : PoolVector2Array
 
+signal health_changed
+signal dead
+
+export (int) var max_health
+
+var alive = true
+var health
+
 var gameController
 var nav_2d
 var den
@@ -12,6 +20,8 @@ var speed : float
 var basic : bool
 #----------------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
+	health = max_health
+	emit_signal("health_changed", health)
 	TypeList()
 #----------------------------------------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
@@ -75,10 +85,12 @@ func TypeList():
 #			if its anything other than the types above then its dead. So this is where we kill it.
 			queue_free()
 #----------------------------------------------------------------------------------------------------------------------------
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.scancode == KEY_B:
-		take_damage()
+func take_damage(amount):
+	health -= amount
+	emit_signal("health_changed", health)
+	if health <= 0:
+		die()
 
-func take_damage():
-	get_node(mobSprite).subPlacer += -1
-	setType(get_node(mobSprite).subPlacer)
+func die():
+	queue_free() #death animation function
+

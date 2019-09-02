@@ -33,10 +33,9 @@ func enemy_spawn(var enemyNumber, var enemyType):
 		var spawnerInst = rand_range(0,4)
 		SpawnMob(spawners[spawnerInst], enemyType)
 		yield(get_tree().create_timer(0.5),"timeout")
-		print("made a frog")
 
 func _on_Tower_shoot(projectile, _position, _direction):
     var b = projectile.instance()
     add_child(b)
     b.start(_position, _direction)
-    print(b.position)
+
