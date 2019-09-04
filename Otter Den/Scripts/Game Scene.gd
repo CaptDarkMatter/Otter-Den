@@ -31,6 +31,8 @@ func _input(event: InputEvent) -> void:
 		var spawnTower = tower.instance()
 		spawnTower.position = get_node("Cursor").position
 		newShip.add_child(spawnTower)
+		curHold = false
+		get_node("Cursor").hide()
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -54,3 +56,10 @@ func enemy_spawn(var enemyNumber, var enemyType):
 		var spawnerInst = rand_range(0,4)
 		SpawnMob(spawners[spawnerInst], enemyType)
 		yield(get_tree().create_timer(0.5),"timeout")
+
+func buttTest():
+	enemy_spawn(20, "frog2")
+
+func _on_Control_tower_spawn_pressed():
+	curHold = true
+	get_node("Cursor").show()
