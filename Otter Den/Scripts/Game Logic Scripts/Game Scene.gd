@@ -4,14 +4,22 @@ var ship = preload("res://Scenes/Ship.tscn")
 var tower = preload("res://Scenes/Tower.tscn")
 onready var newShip = ship.instance()
 onready var curHold : bool = false
+var money = 500
+var lives = 20
+var new_tower_type
+onready var wave : int = 0
+
+signal updateUI
 
 func _ready():
 	set_process_input(true)
 	newShip.position = Vector2(0,0)
+	newShip.type = "raft"
 	add_child(newShip)
 	get_node("Camera2D").position = newShip.position - (get_viewport_rect().size / 2)
 	print("Press A to spawn some frogs. Press B to hurt the frogs")
 	print("Press S to toggle Spawn Mode. Left Clicking in Spawn Mode will spawn a Tower.")
+	emit_signal("updateUI")
 
 func _input(event: InputEvent) -> void:
 #	if not event is InputEventKey:
@@ -30,6 +38,7 @@ func _input(event: InputEvent) -> void:
 #		print("mouse!")
 		var spawnTower = tower.instance()
 		spawnTower.position = get_node("Cursor").position
+		spawnTower.type = new_tower_type
 		newShip.add_child(spawnTower)
 		curHold = false
 		get_node("Cursor").hide()
@@ -45,7 +54,8 @@ func SpawnMob(var spawnTarget : Vector2, var spawnType : String):
 	spawnMob.type = spawnType
 	spawnMob.nav_2d = get_node("Ship/Navigation2D")
 	spawnMob.den = get_node("Ship/Den")
-	get_node("Ship/Navigation2D/NavigationPolygonInstance").add_child(spawnMob)
+#	get_node("Ship/Navigation2D/NavigationPolygonInstance").add_child(spawnMob)
+	get_node("Ship/Navigation2D").get_child(0).add_child(spawnMob)
 
 func enemy_spawn(var enemyNumber, var enemyType):
 	var spawners = []
@@ -58,8 +68,32 @@ func enemy_spawn(var enemyNumber, var enemyType):
 		yield(get_tree().create_timer(0.5),"timeout")
 
 func buttTest():
-	enemy_spawn(20, "frog2")
+	wave += 1
+	var mobCount = wave + 5 * (wave * 1.02)
+	enemy_spawn(mobCount, "frog2")
+	print(mobCount)
 
-func _on_Control_tower_spawn_pressed():
-	curHold = true
-	get_node("Cursor").show()
+func _on_Control_TS_cannon_pressed():
+	if money >= 500:
+		new_tower_type = "cannon"
+		curHold = true
+		get_node("Cursor").show()
+		money += -500
+		emit_signal("updateUI")
+
+
+func _on_Control_TS_harpoon_pressed():
+	if money >= 200:
+		new_tower_type = "harpoon"
+		curHold = true
+		get_node("Cursor").show()
+		money += -200
+		emit_signal("updateUI")
+
+func mob_killed(var mon):
+	money += mon
+	emit_signal("updateUI")
+
+func life_lost():
+	lives += -1
+	emit_signal("updateUI")

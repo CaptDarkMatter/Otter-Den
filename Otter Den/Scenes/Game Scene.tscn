@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/Game Scene.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/CameraController.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Game Logic Scripts/Game Scene.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game Logic Scripts/CameraController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/Bomb_Tower_2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/background.jpg" type="Texture" id=5]
+[ext_resource path="res://Scripts/Game Logic Scripts/Background.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/background.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/water.png" type="Texture" id=7]
 
 [node name="Game Scene" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,11 +24,28 @@ script = ExtResource( 2 )
 visible = false
 texture = ExtResource( 4 )
 
-[node name="Background" type="Node" parent="."]
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource( 5 )
+water = NodePath("water")
+water2 = NodePath("water2")
 
-[node name="Sprite" type="Sprite" parent="Background"]
-scale = Vector2( 4.57627, 5.42373 )
+[node name="foreground" type="Sprite" parent="Background"]
+scale = Vector2( 5, 5 )
 z_index = -2
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
+
+[node name="water" type="Sprite" parent="Background"]
+scale = Vector2( 5, 5 )
+z_index = -3
+texture = ExtResource( 7 )
+
+[node name="water2" type="Sprite" parent="Background"]
+position = Vector2( 0, -3540 )
+scale = Vector2( 5, 5 )
+z_index = -3
+texture = ExtResource( 7 )
+[connection signal="updateUI" from="." to="Camera2D/Control" method="_on_Game_Scene_updateUI"]
+[connection signal="TS_cannon_pressed" from="Camera2D/Control" to="." method="_on_Control_TS_cannon_pressed"]
+[connection signal="TS_harpoon_pressed" from="Camera2D/Control" to="." method="_on_Control_TS_harpoon_pressed"]
 [connection signal="start_pressed" from="Camera2D/Control" to="." method="buttTest"]
 [connection signal="tower_spawn_pressed" from="Camera2D/Control" to="." method="_on_Control_tower_spawn_pressed"]

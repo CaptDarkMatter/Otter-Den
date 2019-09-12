@@ -1,10 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/MobController.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/MobTextureList.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Mob Scripts/MobController.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Mob Scripts/MobTextureList.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Frog1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Frog2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/tadpole.jpg" type="Texture" id=5]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,6 +20,7 @@ frog2 = ExtResource( 4 )
 frog3 = ExtResource( 5 )
 
 [node name="Mob2D" type="Area2D" parent="."]
+editor/display_folded = true
 collision_layer = 2
 collision_mask = 4
 

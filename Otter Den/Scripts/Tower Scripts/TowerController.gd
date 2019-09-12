@@ -5,7 +5,8 @@ var targets = []
 var target_WF = []
 # warning-ignore:unused_class_variable
 var myProjectile : String 
-
+var type : String
+var cost : int
 #signal shoot
 
 export (float) var gun_cooldown
@@ -15,7 +16,9 @@ var can_shoot = true
 #onready var projectileSpawn = self.get_parent().get_node("../")
 
 func _ready():
+	TypeList()
 	$GunTimer.wait_time = gun_cooldown
+#	This is broken for some reason. Whenever i spawn a new tower type, every towers radius changes to that of the new tower.
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius * 10
 
 func shoot():
@@ -24,8 +27,9 @@ func shoot():
 		$GunTimer.start()
 		var dir = Vector2(1,0).rotated($Turret.global_rotation)
 		var b = projectile.instance()
-		self.get_parent().add_child(b)
+		b.type = myProjectile
 		b.start($Turret/Muzzle.global_position, dir)
+		self.get_parent().add_child(b)
 
 func _on_GunTimer_timeout():
 	can_shoot = true
@@ -52,3 +56,20 @@ func _on_DetectRadius_area_entered(area):
 func _on_DetectRadius_area_exited(area):
 	targets.remove(0)
 	target_WF.remove(0)
+
+func TypeList():
+	match type:
+		"cannon":
+			get_node("Turret").texture = get_node("Turret").cannon
+			get_node("Turret").subPlacer = 0
+			gun_cooldown = 0.5
+			detect_radius = 15
+			myProjectile = "cannonball"
+			cost = 500
+		"harpoon":
+			get_node("Turret").texture = get_node("Turret").harpoon
+			get_node("Turret").subPlacer = 1
+			gun_cooldown = 3
+			detect_radius = 30
+			myProjectile = "spike"
+			cost = 200
