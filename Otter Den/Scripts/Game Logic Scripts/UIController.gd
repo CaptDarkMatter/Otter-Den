@@ -9,17 +9,21 @@ onready var startbox = $Panel/startbox
 onready var shipbox = $Panel/shipbox
 onready var towerbox = $Panel/towerbox
 onready var TowerSubMenu = $Panel/wallRight/TowerSubMenu
+onready var ShipSubMenu = $Panel/wallLeft/ShipSubMenu
 
 onready var menu_open : bool = true
 onready var tower_sub_menu_open : bool = false
+onready var ship_sub_menu_open : bool = false
 
 signal start_pressed
 signal tower_spawn_pressed
 signal TS_cannon_pressed
 signal TS_harpoon_pressed
+signal BigShip_pressed
 
 func _ready():
 	TowerSubMenu.rect_position += Vector2(rect_size.x,0)
+	ShipSubMenu.rect_position += Vector2(rect_size.x * -1,0)
 
 func show_menu():
 	if menu_open:
@@ -57,6 +61,14 @@ func _on_TowerMenu_pressed():
 		TowerSubMenu.rect_position += Vector2(rect_size.x * -1,0)
 		tower_sub_menu_open = true
 
+func _on_ShipMenu_pressed():
+	if ship_sub_menu_open:
+		ShipSubMenu.rect_position += Vector2(rect_size.x * -1,0)
+		ship_sub_menu_open = false
+	else:
+		ShipSubMenu.rect_position += Vector2(rect_size.x,0)
+		ship_sub_menu_open = true
+
 #func _on_ItemList_item_activated(index):
 #	emit_signal("tower_spawn_pressed")
 
@@ -73,3 +85,8 @@ func _on_Game_Scene_updateUI():
 	var livesUI = str(get_tree().get_root().get_node("Game Scene").lives)
 	get_node("Panel/moneybox/RichTextLabel").text = ("$: " + moneyUI)
 	get_node("Panel/moneybox/RichTextLabel2").text = ("Lives: " + livesUI)
+
+
+func _on_ShipList_item_activated(index):
+	emit_signal("BigShip_pressed")
+	pass # Replace with function body.

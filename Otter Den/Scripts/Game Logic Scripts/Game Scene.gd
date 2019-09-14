@@ -4,7 +4,8 @@ var ship = preload("res://Scenes/Ship.tscn")
 var tower = preload("res://Scenes/Tower.tscn")
 onready var newShip = ship.instance()
 onready var curHold : bool = false
-var money = 500
+onready var validPlace : bool = true
+var money = 1000
 var lives = 20
 var new_tower_type
 onready var wave : int = 0
@@ -34,7 +35,7 @@ func _input(event: InputEvent) -> void:
 		else: 
 			curHold = true 
 			get_node("Cursor").show()
-	if curHold and Input.is_action_just_pressed("mouse_left"):
+	if curHold and Input.is_action_just_pressed("mouse_left") and validPlace == true:
 #		print("mouse!")
 		var spawnTower = tower.instance()
 		spawnTower.position = get_node("Cursor").position
@@ -52,10 +53,10 @@ func SpawnMob(var spawnTarget : Vector2, var spawnType : String):
 	var spawnMob = mob.instance()
 	spawnMob.position = spawnTarget
 	spawnMob.type = spawnType
-	spawnMob.nav_2d = get_node("Ship/Navigation2D")
+	spawnMob.nav_2d = get_node("Ship").get_child(2)
 	spawnMob.den = get_node("Ship/Den")
 #	get_node("Ship/Navigation2D/NavigationPolygonInstance").add_child(spawnMob)
-	get_node("Ship/Navigation2D").get_child(0).add_child(spawnMob)
+	get_node("Ship").get_child(2).get_child(0).add_child(spawnMob)
 
 func enemy_spawn(var enemyNumber, var enemyType):
 	var spawners = []
@@ -81,7 +82,6 @@ func _on_Control_TS_cannon_pressed():
 		money += -500
 		emit_signal("updateUI")
 
-
 func _on_Control_TS_harpoon_pressed():
 	if money >= 200:
 		new_tower_type = "harpoon"
@@ -97,3 +97,10 @@ func mob_killed(var mon):
 func life_lost():
 	lives += -1
 	emit_signal("updateUI")
+
+func _on_Control_BigShip_pressed():
+	if money >= 5000:
+		money += -5000
+		emit_signal("updateUI")
+		get_node("Ship").type = "ship1"
+		get_node("Ship").TypeList()

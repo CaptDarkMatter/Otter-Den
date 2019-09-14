@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Ship Scripts/ShipController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/raft.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Ship Scripts/ShipTextureList.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/shipSprite.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Test.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Raft.tscn" type="PackedScene" id=6]
 
 [node name="Ship" type="Node2D"]
 z_index = 1
@@ -28,5 +27,3 @@ ship1 = ExtResource( 4 )
 [node name="Den" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
-
-[node name="Navigation2D" parent="." instance=ExtResource( 6 )]

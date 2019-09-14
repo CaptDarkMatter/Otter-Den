@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Game Logic Scripts/UIController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Game GUI/menuwall.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Bomb_Tower_2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/harpoon.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Game GUI/menuwallV.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Game GUI/moneybox.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Game GUI/startbox.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Game GUI/shipbox.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Game GUI/towerbox.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Game GUI/menubox.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/shipSprite.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Bomb_Tower_2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/harpoon.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Game GUI/menuwallV.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Game GUI/moneybox.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Game GUI/startbox.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Game GUI/shipbox.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Game GUI/towerbox.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Game GUI/menubox.png" type="Texture" id=11]
 
 [node name="Control" type="Control"]
 margin_right = 1080.0
@@ -28,6 +29,23 @@ margin_right = 43.0
 margin_bottom = 1920.0
 texture = ExtResource( 2 )
 expand = true
+
+[node name="ShipSubMenu" type="Panel" parent="Panel/wallLeft"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -746.0
+margin_right = 357.0
+margin_bottom = 769.0
+
+[node name="ShipList" type="ItemList" parent="Panel/wallLeft/ShipSubMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 14.0
+margin_right = -6.0
+margin_bottom = -5.0
+items = [ "Ship 1", ExtResource( 3 ), false ]
+allow_reselect = true
+fixed_icon_size = Vector2( 400, 400 )
 
 [node name="wallRight" type="TextureRect" parent="Panel"]
 anchor_left = 1.0
@@ -49,11 +67,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -175.0
-margin_top = -756.5
-margin_right = 175.0
+margin_left = -174.5
+margin_top = -736.5
+margin_right = 175.5
 margin_bottom = 756.5
-items = [ "Cannon - 500", ExtResource( 3 ), false, "Harpoon - 200", ExtResource( 4 ), false ]
+items = [ "Cannon - 500", ExtResource( 4 ), false, "Harpoon - 200", ExtResource( 5 ), false ]
 allow_reselect = true
 icon_scale = 3.0
 
@@ -62,7 +80,7 @@ margin_left = 4.0
 margin_top = -0.5
 margin_right = 1080.0
 margin_bottom = 42.5
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 
 [node name="wallBottom" type="TextureRect" parent="Panel"]
@@ -71,14 +89,14 @@ anchor_bottom = 1.0
 margin_top = -41.0
 margin_right = 1080.0
 margin_bottom = 2.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 
 [node name="moneybox" type="TextureRect" parent="Panel"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/moneybox"]
 anchor_left = 0.5
@@ -125,7 +143,7 @@ anchor_right = 1.0
 margin_left = -377.0
 margin_bottom = 225.0
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="Button" type="Button" parent="Panel/startbox"]
 anchor_left = 0.01
@@ -142,7 +160,15 @@ anchor_bottom = 1.0
 margin_top = -195.0
 margin_right = 376.0
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
+
+[node name="ShipMenu" type="Button" parent="Panel/shipbox"]
+anchor_top = 0.031
+anchor_right = 0.995
+anchor_bottom = 1.0
+margin_top = -0.0450001
+margin_right = -0.120026
+flat = true
 
 [node name="towerbox" type="TextureRect" parent="Panel"]
 anchor_left = 1.0
@@ -152,7 +178,7 @@ anchor_bottom = 1.0
 margin_left = -377.0
 margin_top = -195.0
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="TowerMenu" type="Button" parent="Panel/towerbox"]
 anchor_right = 1.0
@@ -171,7 +197,7 @@ margin_top = -0.5
 margin_right = 107.001
 margin_bottom = 103.5
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Menubutton" type="Button" parent="Panel/menubox"]
 anchor_left = 0.5
@@ -181,8 +207,9 @@ margin_top = 0.5
 margin_right = 99.9995
 margin_bottom = 100.5
 flat = true
+[connection signal="item_activated" from="Panel/wallLeft/ShipSubMenu/ShipList" to="." method="_on_ShipList_item_activated"]
 [connection signal="item_activated" from="Panel/wallRight/TowerSubMenu/ItemList" to="." method="_on_ItemList_item_activated"]
-[connection signal="item_selected" from="Panel/wallRight/TowerSubMenu/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="Panel/startbox/Button" to="." method="_on_Start_Button_pressed"]
+[connection signal="pressed" from="Panel/shipbox/ShipMenu" to="." method="_on_ShipMenu_pressed"]
 [connection signal="pressed" from="Panel/towerbox/TowerMenu" to="." method="_on_TowerMenu_pressed"]
 [connection signal="pressed" from="Panel/menubox/Menubutton" to="." method="show_menu"]
