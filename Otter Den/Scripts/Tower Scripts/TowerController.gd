@@ -16,6 +16,8 @@ var can_shoot = true
 #onready var projectileSpawn = self.get_parent().get_node("../")
 
 func _ready():
+	var circle = CircleShape2D.new()
+	$DetectRadius/CollisionShape2D.shape = circle
 	TypeList()
 	$GunTimer.wait_time = gun_cooldown
 #	This is broken for some reason. Whenever i spawn a new tower type, every towers radius changes to that of the new tower.
