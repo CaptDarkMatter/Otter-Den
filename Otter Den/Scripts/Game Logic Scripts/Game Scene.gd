@@ -18,6 +18,8 @@ func _ready():
 	newShip.type = "raft"
 	add_child(newShip)
 	get_node("Camera2D").position = newShip.position - (get_viewport_rect().size / 2)
+#	get_node("CanvasLayer/Control").rect_global_position = get_node("Camera2D").position
+	get_node("CanvasLayer/Control").rect_global_position = newShip.position
 	print("Press A to spawn some frogs. Press B to hurt the frogs")
 	print("Press S to toggle Spawn Mode. Left Clicking in Spawn Mode will spawn a Tower.")
 	emit_signal("updateUI")

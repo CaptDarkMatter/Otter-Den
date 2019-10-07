@@ -11,11 +11,24 @@ func _ready():
 	self.limit_left = -1080
 	self.limit_top = -1920
 	self.limit_bottom = 1920
+
+func _process(delta):
+#	if self.position.x > self.limit_right:
+#		self.position.x = self.limit_right - 1
+	
+	if self.position.x < self.limit_left:
+		self.position.x = self.limit_left
+	
+#	if self.position.y < self.limit_top:
+#		self.position.x = self.limit_top
+#
+#	if self.position.y > self.limit_bottom:
+#		self.position.x = self.limit_bottom
 #Handle Zooming--------------------------------------------------------------------------------------------------------------
-#func _zoom_camera(dir):
-#	zoom += Vector2(0.1, 0.1) * dir
-#	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
-#	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
+func _zoom_camera(dir):
+	zoom += Vector2(0.1, 0.1) * dir
+	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
+	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
 #----------------------------------------------------------------------------------------------------------------------------
 func _unhandled_input(event: InputEvent) -> void:
 	# Handle actual Multi-touch from capable devices
@@ -35,12 +48,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		key_str = PoolByteArray([event.unicode]).get_string_from_utf8()
 
 	# Wheel Up Event
-#	if event.is_action_pressed("zoom_in") or key_str == '+':
-#		#print(event.position)
-#		_zoom_camera(-1)
-#	# Wheel Down Event
-#	elif event.is_action_pressed("zoom_out") or key_str == '-':
-#		_zoom_camera(1)
+	if event.is_action_pressed("zoom_in") or key_str == '+':
+		#print(event.position)
+		_zoom_camera(-1)
+	# Wheel Down Event
+	elif event.is_action_pressed("zoom_out") or key_str == '-':
+		_zoom_camera(1)
 #----------------------------------------------------------------------------------------------------------------------------
 func update_touch_info():
 	if _touches.size() <= 0:
