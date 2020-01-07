@@ -5,7 +5,7 @@ var tower = preload("res://Scenes/Tower.tscn")
 onready var newShip = ship.instance()
 onready var curHold : bool = false
 onready var validPlace : bool = true
-var money = 1000
+var money = 5000
 var lives = 20
 var new_tower_type
 onready var wave : int = 0
