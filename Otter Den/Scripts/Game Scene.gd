@@ -9,7 +9,7 @@ func _ready():
 	set_process_input(true)
 	newShip.position = Vector2(0,0)
 	add_child(newShip)
-	get_node("Camera2D").position = newShip.position - (get_viewport_rect().size / 2)
+	get_node("CamParent/Camera2D").position = newShip.position - (get_viewport_rect().size / 2)
 	print("Press A to spawn some frogs. Press B to hurt the frogs")
 	print("Press S to toggle Spawn Mode. Left Clicking in Spawn Mode will spawn a Tower.")
 

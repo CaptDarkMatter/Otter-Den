@@ -58,13 +58,12 @@ func do_multitouch_pan():
 	var diff = _touches_info.target - _touches_info.cur_pos
 
 	var new_pos = self.position + (diff * zoom.x)
-
-#	var bounds = levelLoaderRef.levelSize
-#	var tile_size = levelLoaderRef.tileSize
-#	if new_pos.x < 0 or new_pos.x > (bounds.x * tile_size):
-#		new_pos.x = self.position.x
-#	if new_pos.y < 0 or new_pos.y > (bounds.y * tile_size):
-#		new_pos.y = self.position.y
+	
+#these numbers could later be replaced with map bounds that could scale dynamically to the size we need.
+	if new_pos.x < -1080 or new_pos.x > 0:
+		new_pos.x = self.position.x
+	if new_pos.y < -1920 or new_pos.y > 0:
+		new_pos.y = self.position.y
 
 	self.position = new_pos
 
