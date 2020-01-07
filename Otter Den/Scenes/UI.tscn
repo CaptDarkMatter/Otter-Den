@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scripts/UIController.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game Logic Scripts/UIController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Game GUI/menuwall.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/RectTest.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/Bomb_Tower_2.png" type="Texture" id=4]
