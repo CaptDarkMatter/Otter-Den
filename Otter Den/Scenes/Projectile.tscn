@@ -1,23 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Projectile.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/icon.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Tower Scripts/ProjectileController.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Tower Scripts/ProjectileTextureList.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/CannonBall.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Spike.png" type="Texture" id=4]
+
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 16.0927
 
 [node name="Projectile" type="Area2D"]
 z_index = 2
+collision_layer = 4
+collision_mask = 2
 script = ExtResource( 1 )
-speed = 40
-damage = 20
-lifetime = 400.0
+speed = 400
+lifetime = 1.0
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="BulletSprite" type="Sprite" parent="."]
+script = ExtResource( 2 )
+cannonball = ExtResource( 3 )
+spike = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ProjectileShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Lifetime" type="Timer" parent="."]
-[connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_Projectile_area_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
