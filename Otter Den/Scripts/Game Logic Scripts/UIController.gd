@@ -72,12 +72,12 @@ func _on_ShipMenu_pressed():
 #func _on_ItemList_item_activated(index):
 #	emit_signal("tower_spawn_pressed")
 
-func _on_ItemList_item_activated(index):
-	match index:
-		0:
-			emit_signal("TS_cannon_pressed")
-		1:
-			emit_signal("TS_harpoon_pressed")
+#func _on_ItemList_item_activated(index):
+#	match index:
+#		0:
+#			emit_signal("TS_cannon_pressed")
+#		1:
+#			emit_signal("TS_harpoon_pressed")
 #	emit_signal("tower_spawn_pressed")
 
 func _on_Game_Scene_updateUI():
@@ -90,3 +90,12 @@ func _on_Game_Scene_updateUI():
 func _on_ShipList_item_activated(index):
 	emit_signal("BigShip_pressed")
 	pass # Replace with function body.
+
+
+func _on_ItemList_item_selected(index):
+	match index:
+		0:
+			emit_signal("TS_cannon_pressed")
+		1:
+			emit_signal("TS_harpoon_pressed")
+	$Panel/wallRight/TowerSubMenu/ItemList.unselect_all()

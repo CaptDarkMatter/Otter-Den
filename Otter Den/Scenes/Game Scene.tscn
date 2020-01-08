@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Game Logic Scripts/Game Scene.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Game Logic Scripts/CameraController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprites/Bomb_Tower_2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/cannon.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Game Logic Scripts/Cursor.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Game Logic Scripts/Background.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/background.png" type="Texture" id=7]
@@ -53,5 +53,8 @@ scale = Vector2( 5, 5 )
 z_index = -3
 texture = ExtResource( 8 )
 [connection signal="updateUI" from="." to="CanvasLayer/Control" method="_on_Game_Scene_updateUI"]
+[connection signal="BigShip_pressed" from="CanvasLayer/Control" to="." method="_on_Control_BigShip_pressed"]
+[connection signal="TS_cannon_pressed" from="CanvasLayer/Control" to="." method="_on_Control_TS_cannon_pressed"]
+[connection signal="TS_harpoon_pressed" from="CanvasLayer/Control" to="." method="_on_Control_TS_harpoon_pressed"]
 [connection signal="start_pressed" from="CanvasLayer/Control" to="." method="buttTest"]
 [connection signal="tower_spawn_pressed" from="CanvasLayer/Control" to="." method="_on_Control_tower_spawn_pressed"]

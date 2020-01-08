@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Game Logic Scripts/UIController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Game GUI/menuwall.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/shipSprite.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Bomb_Tower_2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/cannon.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/harpoon.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Game GUI/menuwallV.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Game GUI/moneybox.png" type="Texture" id=7]
@@ -209,6 +209,7 @@ margin_bottom = 100.5
 flat = true
 [connection signal="item_activated" from="Panel/wallLeft/ShipSubMenu/ShipList" to="." method="_on_ShipList_item_activated"]
 [connection signal="item_activated" from="Panel/wallRight/TowerSubMenu/ItemList" to="." method="_on_ItemList_item_activated"]
+[connection signal="item_selected" from="Panel/wallRight/TowerSubMenu/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="Panel/startbox/Button" to="." method="_on_Start_Button_pressed"]
 [connection signal="pressed" from="Panel/shipbox/ShipMenu" to="." method="_on_ShipMenu_pressed"]
 [connection signal="pressed" from="Panel/towerbox/TowerMenu" to="." method="_on_TowerMenu_pressed"]

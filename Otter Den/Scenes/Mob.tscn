@@ -19,6 +19,7 @@ frog2 = ExtResource( 4 )
 frog3 = ExtResource( 5 )
 
 [node name="Mob2D" type="Area2D" parent="."]
+editor/display_folded = true
 collision_layer = 2
 collision_mask = 4
 

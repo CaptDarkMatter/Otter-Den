@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/Tower Scripts/Projectile.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/CannonBall.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Tower Scripts/ProjectileController.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Tower Scripts/ProjectileTextureList.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/CannonBall.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Spike.png" type="Texture" id=4]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0927
@@ -14,11 +17,12 @@ script = ExtResource( 1 )
 speed = 400
 lifetime = 1.0
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 2 )
+[node name="BulletSprite" type="Sprite" parent="."]
+script = ExtResource( 2 )
+cannonball = ExtResource( 3 )
+spike = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ProjectileShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Lifetime" type="Timer" parent="."]

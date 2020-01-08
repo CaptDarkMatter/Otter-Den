@@ -11,6 +11,7 @@ var den
 var type : String
 var speed : float
 var basic : bool
+var reward : int
 #----------------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
 	TypeList()
@@ -18,7 +19,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if path.size() == 0:
 		if basic:
+			reward = 0
 			setType(0)
+			get_tree().get_root().get_node("Game Scene").life_lost()
 		return
 	else:
 		var move_distance = speed * delta
@@ -45,6 +48,7 @@ func move_along_path(distance : float) -> void:
 func setType(var typeToSet : int):
 	type = get_node(mobSprite).typeList[typeToSet]
 	TypeList()
+	get_tree().get_root().get_node("Game Scene").mob_killed(reward)
 #----------------------------------------------------------------------------------------------------------------------------
 func TypeList():
 	match type:
@@ -54,12 +58,14 @@ func TypeList():
 			speed = 200.0
 			basic = true
 			path = nav_2d._create_path(self.position, den.position)
+			reward = 10
 		"frog2":
 			get_node(mobSprite).texture = get_node(mobSprite).frog2
 			get_node(mobSprite).subPlacer = 2
 			speed = 350.0
 			basic = true
 			path = nav_2d._create_path(self.position, den.position)
+			reward = 15
 		"frog3":
 			get_node(mobSprite).texture = get_node(mobSprite).frog3
 			get_node(mobSprite).subPlacer = 3

@@ -106,3 +106,7 @@ func _on_Control_BigShip_pressed():
 		emit_signal("updateUI")
 		get_node("Ship").type = "ship1"
 		get_node("Ship").TypeList()
+
+
+func _on_Control_tower_spawn_pressed():
+	pass # Replace with function body.
