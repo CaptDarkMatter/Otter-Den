@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Game Logic Scripts/UIController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Game GUI/menuwall.png" type="Texture" id=2]
@@ -7,10 +7,11 @@
 [ext_resource path="res://Sprites/harpoon.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Game GUI/menuwallV.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Game GUI/moneybox.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Game GUI/startbox.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Game GUI/shipbox.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Game GUI/towerbox.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Game GUI/menubox.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Game GUI/previewbox.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Game GUI/startbox.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Game GUI/shipbox.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Game GUI/towerbox.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Game GUI/menubox.png" type="Texture" id=12]
 
 [node name="Control" type="Control"]
 margin_right = 1080.0
@@ -93,6 +94,7 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="moneybox" type="TextureRect" parent="Panel"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( -1058, 919 )
@@ -137,13 +139,29 @@ size_flags_stretch_ratio = 0.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Wave:"
 
+[node name="previewbox" type="TextureRect" parent="Panel"]
+visible = false
+margin_right = 376.0
+margin_bottom = 225.0
+texture = ExtResource( 8 )
+
+[node name="Preview" type="TextureRect" parent="Panel/previewbox"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -25.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 32.58, 25.09 )
+
 [node name="startbox" type="TextureRect" parent="Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -377.0
 margin_bottom = 225.0
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="Button" type="Button" parent="Panel/startbox"]
 anchor_left = 0.01
@@ -160,7 +178,7 @@ anchor_bottom = 1.0
 margin_top = -195.0
 margin_right = 376.0
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="ShipMenu" type="Button" parent="Panel/shipbox"]
 anchor_top = 0.031
@@ -178,7 +196,7 @@ anchor_bottom = 1.0
 margin_left = -377.0
 margin_top = -195.0
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="TowerMenu" type="Button" parent="Panel/towerbox"]
 anchor_right = 1.0
@@ -197,7 +215,7 @@ margin_top = -0.5
 margin_right = 107.001
 margin_bottom = 103.5
 rect_pivot_offset = Vector2( -1058, 919 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="Menubutton" type="Button" parent="Panel/menubox"]
 anchor_left = 0.5

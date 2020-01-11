@@ -36,8 +36,12 @@ func shoot():
 func _on_GunTimer_timeout():
 	can_shoot = true
 
-# warning-ignore:unused_argument
 func _process(delta):
+	if get_node("/root/Game Scene/Cursor").is_visible():
+		if $Bounds.overlaps_area(get_node("/root/Game Scene/Cursor/CursorArea")):
+			get_node("/root/Game Scene").validPlace = false
+			get_node("/root/Game Scene/Cursor/OutBounds").show()
+
 	if targets.size() <= 0: 
 		return
 	if (!target_WF[0].get_ref()):
@@ -54,7 +58,6 @@ func _on_DetectRadius_area_entered(area):
 		targets.insert(Apos, area) 
 		target_WF.insert(TWFpos, weakref(targets[targets.size() - 1].get_parent()))
 
-# warning-ignore:unused_argument
 func _on_DetectRadius_area_exited(area):
 	targets.remove(0)
 	target_WF.remove(0)

@@ -25,6 +25,13 @@ func _ready():
 	TowerSubMenu.rect_position += Vector2(rect_size.x,0)
 	ShipSubMenu.rect_position += Vector2(rect_size.x * -1,0)
 
+func _process(delta):
+	if get_node("/root/Game Scene").curHold == true:
+		$Panel/previewbox.show()
+		$Panel/previewbox/Preview.rect_rotation += 1
+	else:
+		$Panel/previewbox.hide()
+
 func show_menu():
 	if menu_open:
 		wallLeft.rect_position += Vector2(rect_size.x * -1,0)
@@ -96,6 +103,10 @@ func _on_ItemList_item_selected(index):
 	match index:
 		0:
 			emit_signal("TS_cannon_pressed")
+			var tower1 : Texture = load("res://Sprites/cannon.png")
+			$Panel/previewbox/Preview.texture = tower1
 		1:
 			emit_signal("TS_harpoon_pressed")
+			var tower2 : Texture = load("res://Sprites/harpoon.png")
+			$Panel/previewbox/Preview.texture = tower2
 	$Panel/wallRight/TowerSubMenu/ItemList.unselect_all()

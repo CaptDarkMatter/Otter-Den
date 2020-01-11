@@ -13,29 +13,30 @@ func _zoom_camera(dir):
 	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
 #----------------------------------------------------------------------------------------------------------------------------
 func _unhandled_input(event: InputEvent) -> void:
-	# Handle actual Multi-touch from capable devices
-	if event is InputEventScreenTouch and event.pressed == true:
-		_touches[event.index] = {"start":event, "current":event}
-	if event is InputEventScreenTouch and event.pressed == false:
-		_touches.erase(event.index)
-	if event is InputEventScreenDrag:
-		_touches[event.index]["current"] = event
-		update_pinch_gesture()
+	if get_node("/root/Game Scene").curHold == false:
+		# Handle actual Multi-touch from capable devices
+		if event is InputEventScreenTouch and event.pressed == true:
+			_touches[event.index] = {"start":event, "current":event}
+		if event is InputEventScreenTouch and event.pressed == false:
+			_touches.erase(event.index)
+		if event is InputEventScreenDrag:
+			_touches[event.index]["current"] = event
+			update_pinch_gesture()
 
-	# Handle Multi-touch using 'A' key and mouse event instead of Touch event
-	pretend_multi_touch(event)
+		# Handle Multi-touch using 'A' key and mouse event instead of Touch event
+		pretend_multi_touch(event)
 
-	var key_str = ""
-	if event is InputEventKey and event.unicode != 0:
-		key_str = PoolByteArray([event.unicode]).get_string_from_utf8()
+		var key_str = ""
+		if event is InputEventKey and event.unicode != 0:
+			key_str = PoolByteArray([event.unicode]).get_string_from_utf8()
 
-	# Wheel Up Event
-	if event.is_action_pressed("zoom_in") or key_str == '+':
-		#print(event.position)
-		_zoom_camera(-1)
-	# Wheel Down Event
-	elif event.is_action_pressed("zoom_out") or key_str == '-':
-		_zoom_camera(1)
+		# Wheel Up Event
+		if event.is_action_pressed("zoom_in") or key_str == '+':
+			#print(event.position)
+			_zoom_camera(-1)
+		# Wheel Down Event
+		elif event.is_action_pressed("zoom_out") or key_str == '-':
+			_zoom_camera(1)
 #----------------------------------------------------------------------------------------------------------------------------
 func update_touch_info():
 	if _touches.size() <= 0:

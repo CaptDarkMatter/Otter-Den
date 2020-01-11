@@ -42,7 +42,7 @@ func TypeList():
 			get_node("BulletSprite").subPlacer = 1
 			speed = 700
 			lifetime = 3
-	print(type)
+#	print(type)
 	var newShape = RectangleShape2D.new()
 	newShape.set_extents(Vector2(get_node("BulletSprite").texture.get_size().x / 2, get_node("BulletSprite").texture.get_size().y / 2))
 	get_node("ProjectileShape2D").set_shape(newShape)

@@ -27,3 +27,7 @@ ship1 = ExtResource( 4 )
 [node name="Den" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
+
+[node name="TowerBucket" type="Node2D" parent="."]
+
+[node name="NavBucket" type="Node2D" parent="."]

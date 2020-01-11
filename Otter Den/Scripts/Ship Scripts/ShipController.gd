@@ -14,24 +14,31 @@ var newNav
 func _ready():
 	TypeList()
 
+func upgrade():
+	var returnMoney : int
+	for node in $TowerBucket.get_children():
+		returnMoney += node.cost
+		node.queue_free()
+	get_node("/root/Game Scene").money += returnMoney
+
 func TypeList():
 	match type:
 		"raft":
-			if get_child_count() > 2:
-				get_child(2).queue_free()
+			if $NavBucket.get_child_count() != 0: 
+				$NavBucket.get_child(0).queue_free()
 			newNav = newraftNav
 			newNav.position = Vector2(0,0)
-			add_child(newNav)
+			$NavBucket.add_child(newNav)
 
 			get_node("ShipSprite").texture = get_node("ShipSprite").raft
 			get_node("ShipSprite").subPlacer = 0
 			get_node(den).position += Vector2(65,-160)
 		"ship1":
-			if get_child_count() > 2:
-				get_child(2).queue_free()
+			if $NavBucket.get_child_count() != 0: 
+				$NavBucket.get_child(0).queue_free()
 			newNav = newbigshipNav
 			newNav.position = Vector2(0,0)
-			add_child(newNav)
+			$NavBucket.add_child(newNav)
 
 			get_node("ShipSprite").texture = get_node("ShipSprite").ship1
 			get_node("ShipSprite").subPlacer = 1

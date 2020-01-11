@@ -57,14 +57,14 @@ func TypeList():
 			get_node(mobSprite).subPlacer = 1
 			speed = 200.0
 			basic = true
-			path = nav_2d._create_path(self.position, den.position)
+			path = get_parent()._create_path(self.position, den.position)
 			reward = 10
 		"frog2":
 			get_node(mobSprite).texture = get_node(mobSprite).frog2
 			get_node(mobSprite).subPlacer = 2
 			speed = 350.0
 			basic = true
-			path = nav_2d._create_path(self.position, den.position)
+			path = get_parent()._create_path(self.position, den.position)
 			reward = 15
 		"frog3":
 			get_node(mobSprite).texture = get_node(mobSprite).frog3
