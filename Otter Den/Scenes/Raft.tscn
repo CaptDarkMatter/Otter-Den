@@ -14,7 +14,6 @@ script = ExtResource( 1 )
 navpoly = SubResource( 1 )
 
 [node name="deckArea" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="Deck" type="CollisionPolygon2D" parent="deckArea"]
 polygon = PoolVector2Array( -109.023, -127.467, 106.171, -126.334, 106.171, 87.7267, -109.023, 86.5941 )
