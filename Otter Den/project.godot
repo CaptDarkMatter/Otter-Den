@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Otter Den"
 run/main_scene="res://Scenes/Title.tscn"
+config/version="0.0.1"
 
 [debug]
 

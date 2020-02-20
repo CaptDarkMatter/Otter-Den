@@ -1,0 +1,43 @@
+[gd_scene format=2]
+
+[node name="SaveLoad" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -680.0
+margin_bottom = -1720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column" type="VBoxContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Column"]
+margin_right = 400.0
+margin_bottom = 24.0
+
+[node name="SpinBox" type="SpinBox" parent="Column/HBoxContainer"]
+margin_right = 74.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Column/HBoxContainer"]
+margin_left = 78.0
+margin_top = 5.0
+margin_right = 78.0
+margin_bottom = 19.0
+
+[node name="SaveButton" type="Button" parent="Column"]
+margin_top = 70.0
+margin_right = 400.0
+margin_bottom = 120.0
+
+[node name="LoadButton" type="Button" parent="Column"]
+margin_top = 124.0
+margin_right = 400.0
+margin_bottom = 174.0
+
+[node name="Node" type="Node" parent="."]
