@@ -11,6 +11,8 @@ onready var newbigshipNav = bigshipPath.instance()
 var type
 var newNav
 
+var SAVE_KEY : String = "Ship"
+
 func _ready():
 	TypeList()
 
@@ -43,3 +45,13 @@ func TypeList():
 			get_node("ShipSprite").texture = get_node("ShipSprite").ship1
 			get_node("ShipSprite").subPlacer = 1
 			get_node(den).position += Vector2(-65,670)
+			
+func save(save_game : Resource):
+	save_game.data[SAVE_KEY] = {
+		'shipType' : type
+	}
+	
+func load(save_game : Resource):
+	var data : Dictionary = save_game.data[SAVE_KEY]
+	type = data['shipType']
+	

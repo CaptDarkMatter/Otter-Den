@@ -48,3 +48,5 @@ text = "Load"
 
 [node name="GameSaver" type="Node" parent="."]
 script = ExtResource( 1 )
+[connection signal="pressed" from="Column/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="Column/LoadButton" to="." method="_on_LoadButton_pressed"]
