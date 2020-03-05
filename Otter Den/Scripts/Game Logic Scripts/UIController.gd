@@ -10,10 +10,12 @@ onready var shipbox = $Panel/shipbox
 onready var towerbox = $Panel/towerbox
 onready var TowerSubMenu = $Panel/wallRight/TowerSubMenu
 onready var ShipSubMenu = $Panel/wallLeft/ShipSubMenu
+onready var pauseScreen = $Panel/SaveLoad
 
 onready var menu_open : bool = true
 onready var tower_sub_menu_open : bool = false
 onready var ship_sub_menu_open : bool = false
+onready var paused : bool = false
 
 signal start_pressed
 signal tower_spawn_pressed
@@ -22,8 +24,9 @@ signal TS_harpoon_pressed
 signal BigShip_pressed
 
 func _ready():
-	TowerSubMenu.rect_position += Vector2(rect_size.x,0)
-	ShipSubMenu.rect_position += Vector2(rect_size.x * -1,0)
+	TowerSubMenu.rect_position += Vector2(rect_size.x, 0)
+	ShipSubMenu.rect_position += Vector2(rect_size.x * -1, 0)
+	pauseScreen.rect_position -= Vector2(0, rect_size.y)
 
 func _process(delta):
 	if get_node("/root/Game Scene").curHold == true:
@@ -34,25 +37,33 @@ func _process(delta):
 
 func show_menu():
 	if menu_open:
-		wallLeft.rect_position += Vector2(rect_size.x * -1,0)
-		wallRight.rect_position += Vector2(rect_size.x,0)
-		wallBottom.rect_position += Vector2(0,rect_size.y * -1)
-		wallTop.rect_position += Vector2(0,rect_size.y)
-		moneybox.rect_position += Vector2(rect_size.x * -1,rect_size.y)
-		startbox.rect_position += Vector2(rect_size.x,rect_size.y)
-		shipbox.rect_position += Vector2(rect_size.x * -1,rect_size.y * -1)
-		towerbox.rect_position += Vector2(rect_size.x * -1,rect_size.y)
+		wallLeft.rect_position += Vector2(rect_size.x * -1, 0)
+		wallRight.rect_position += Vector2(rect_size.x, 0)
+		wallBottom.rect_position += Vector2(0, rect_size.y * -1)
+		wallTop.rect_position += Vector2(0, rect_size.y)
+		moneybox.rect_position += Vector2(rect_size.x * -1, rect_size.y)
+		startbox.rect_position += Vector2(rect_size.x, rect_size.y)
+		shipbox.rect_position += Vector2(rect_size.x * -1, rect_size.y * -1)
+		towerbox.rect_position += Vector2(rect_size.x * -1, rect_size.y)
 		menu_open = false
 	else:
-		wallLeft.rect_position += Vector2(rect_size.x,0)
-		wallRight.rect_position += Vector2(rect_size.x * -1,0)
-		wallBottom.rect_position += Vector2(0,rect_size.y)
-		wallTop.rect_position += Vector2(0,rect_size.y * -1)
-		moneybox.rect_position += Vector2(rect_size.x,rect_size.y * -1)
-		startbox.rect_position += Vector2(rect_size.x * -1,rect_size.y * -1)
-		shipbox.rect_position += Vector2(rect_size.x,rect_size.y)
-		towerbox.rect_position += Vector2(rect_size.x,rect_size.y * -1)
+		wallLeft.rect_position += Vector2(rect_size.x, 0)
+		wallRight.rect_position += Vector2(rect_size.x * -1, 0)
+		wallBottom.rect_position += Vector2(0, rect_size.y)
+		wallTop.rect_position += Vector2(0, rect_size.y * -1)
+		moneybox.rect_position += Vector2(rect_size.x, rect_size.y * -1)
+		startbox.rect_position += Vector2(rect_size.x * -1, rect_size.y * -1)
+		shipbox.rect_position += Vector2(rect_size.x, rect_size.y)
+		towerbox.rect_position += Vector2(rect_size.x, rect_size.y * -1)
 		menu_open = true
+		
+func pause():
+	if paused:
+		pauseScreen.rect_position -= Vector2(0, rect_size.y)
+		paused = false
+	else:
+		pauseScreen.rect_position += Vector2(0, rect_size.y)
+		paused = true
 
 func _on_Start_Button_pressed():
 	emit_signal("start_pressed")
@@ -62,18 +73,18 @@ func _on_Start_Button_pressed():
 
 func _on_TowerMenu_pressed():
 	if tower_sub_menu_open:
-		TowerSubMenu.rect_position += Vector2(rect_size.x,0)
+		TowerSubMenu.rect_position += Vector2(rect_size.x, 0)
 		tower_sub_menu_open = false
 	else:
-		TowerSubMenu.rect_position += Vector2(rect_size.x * -1,0)
+		TowerSubMenu.rect_position += Vector2(rect_size.x * -1, 0)
 		tower_sub_menu_open = true
 
 func _on_ShipMenu_pressed():
 	if ship_sub_menu_open:
-		ShipSubMenu.rect_position += Vector2(rect_size.x * -1,0)
+		ShipSubMenu.rect_position += Vector2(rect_size.x * -1, 0)
 		ship_sub_menu_open = false
 	else:
-		ShipSubMenu.rect_position += Vector2(rect_size.x,0)
+		ShipSubMenu.rect_position += Vector2(rect_size.x, 0)
 		ship_sub_menu_open = true
 
 #func _on_ItemList_item_activated(index):
