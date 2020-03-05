@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/Title.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Menu Scripts/Title.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Game GUI/titleCard.png" type="Texture" id=2]
 
 [node name="Title" type="Node2D"]

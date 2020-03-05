@@ -11,7 +11,9 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-[node name="Game Scene" type="Node2D"]
+[node name="Game Scene" type="Node2D" groups=[
+"Game Object",
+]]
 script = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -20,6 +22,7 @@ z_index = 2
 anchor_mode = 0
 current = true
 script = ExtResource( 2 )
+max_zoom = 1.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -51,18 +54,20 @@ water = NodePath("water")
 water2 = NodePath("water2")
 
 [node name="foreground" type="Sprite" parent="Background"]
+visible = false
 scale = Vector2( 5, 5 )
 z_index = -2
 texture = ExtResource( 7 )
 
 [node name="water" type="Sprite" parent="Background"]
-scale = Vector2( 5, 5 )
+position = Vector2( 288.193, 0 )
+scale = Vector2( 6.22116, 5 )
 z_index = -3
 texture = ExtResource( 8 )
 
 [node name="water2" type="Sprite" parent="Background"]
-position = Vector2( 0, -3540 )
-scale = Vector2( 5, 5 )
+position = Vector2( 288.635, -3540 )
+scale = Vector2( 6.22303, 5 )
 z_index = -3
 texture = ExtResource( 8 )
 [connection signal="updateUI" from="." to="CanvasLayer/Control" method="_on_Game_Scene_updateUI"]

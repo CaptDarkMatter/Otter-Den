@@ -76,17 +76,6 @@ func _on_ShipMenu_pressed():
 		ShipSubMenu.rect_position += Vector2(rect_size.x,0)
 		ship_sub_menu_open = true
 
-#func _on_ItemList_item_activated(index):
-#	emit_signal("tower_spawn_pressed")
-
-#func _on_ItemList_item_activated(index):
-#	match index:
-#		0:
-#			emit_signal("TS_cannon_pressed")
-#		1:
-#			emit_signal("TS_harpoon_pressed")
-#	emit_signal("tower_spawn_pressed")
-
 func _on_Game_Scene_updateUI():
 	var moneyUI = str(get_tree().get_root().get_node("Game Scene").money)
 	var livesUI = str(get_tree().get_root().get_node("Game Scene").lives)
@@ -94,9 +83,8 @@ func _on_Game_Scene_updateUI():
 	get_node("Panel/moneybox/RichTextLabel2").text = ("Lives: " + livesUI)
 
 
-func _on_ShipList_item_activated(index):
+func _on_ShipList_item_selected(index):
 	emit_signal("BigShip_pressed")
-	pass # Replace with function body.
 
 
 func _on_ItemList_item_selected(index):

@@ -13,11 +13,13 @@ var newNav
 
 func _ready():
 	TypeList()
+	Settings.load_game("res://save(GAME).json",true)
 
 func upgrade():
 	var returnMoney : int
 	for node in $TowerBucket.get_children():
 		returnMoney += node.cost
+		node.remove_from_group('Game Object')
 		node.queue_free()
 	get_node("/root/Game Scene").money += returnMoney
 

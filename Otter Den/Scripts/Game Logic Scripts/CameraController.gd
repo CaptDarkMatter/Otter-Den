@@ -2,6 +2,10 @@ extends Camera2D
 
 export(float) var max_zoom = 4.0
 export(float) var min_zoom = 0.25
+export(float) var boundsX : int
+export(float) var boundsY : int
+
+onready var inGame : bool = false
 
 var _touches = {} # for pinch zoom and drag with multiple fingers
 var _touches_info = {"num_touch_last_frame":0, "radius":0, "total_pan":0}
@@ -13,7 +17,16 @@ func _zoom_camera(dir):
 	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
 #----------------------------------------------------------------------------------------------------------------------------
 func _unhandled_input(event: InputEvent) -> void:
-	if get_node("/root/Game Scene").curHold == false:
+	var check1
+	if inGame:
+		if get_node("/root/Game Scene").curHold == false:
+			check1 = true
+		else:
+			check1 = false
+	else:
+		check1 = true
+
+	if check1 == true:
 		# Handle actual Multi-touch from capable devices
 		if event is InputEventScreenTouch and event.pressed == true:
 			_touches[event.index] = {"start":event, "current":event}
@@ -61,9 +74,9 @@ func do_multitouch_pan():
 	var new_pos = self.position + (diff * zoom.x)
 	
 #these numbers could later be replaced with map bounds that could scale dynamically to the size we need.
-	if new_pos.x < -1080 or new_pos.x > 0:
+	if new_pos.x < boundsX or new_pos.x > 0:
 		new_pos.x = self.position.x
-	if new_pos.y < -1920 or new_pos.y > 0:
+	if new_pos.y < boundsY or new_pos.y > 0:
 		new_pos.y = self.position.y
 
 	self.position = new_pos

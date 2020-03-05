@@ -16,6 +16,7 @@ var can_shoot = true
 #onready var projectileSpawn = self.get_parent().get_node("../")
 
 func _ready():
+	add_to_group('Game Object')
 	var circle = CircleShape2D.new()
 	$DetectRadius/CollisionShape2D.shape = circle
 	TypeList()
@@ -78,3 +79,29 @@ func TypeList():
 			detect_radius = 30
 			myProjectile = "spike"
 			cost = 200
+
+#func save():
+#	var save_dict = {
+#		group="tower",
+#		parentPath=self.get_parent().get_path(),
+#		pos={
+#			x=position.x,
+#			y=position.y
+#		},
+#		type=type,
+#		myName=self.name
+#	}
+#	return save_dict
+
+func save():
+	var save_dict = {
+		"group":"tower",
+		"parentPath":self.get_parent().get_path(),
+		pos={
+			"x":position.x,
+			"y":position.y
+		},
+		"type":type,
+		"myName":self.name
+	}
+	return save_dict

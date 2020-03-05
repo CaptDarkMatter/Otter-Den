@@ -9,30 +9,43 @@ var money = 1000
 var lives = 20
 var price : int
 var new_tower_type
+var nameCounter : int
 onready var wave : int = 0
+var totalWaves : int = 10
 
 signal updateUI
 
 func _ready():
+#	Settings.load_game("res://save(LEVEL).json",false)
+	Settings.load_game("res://save(GAME).json",false)
+	_Local_Level_Load()
 	set_process_input(true)
 	newShip.position = Vector2(0,0)
 	newShip.type = "raft"
 	add_child(newShip)
+	$Camera2D.boundsX = -1080
+	$Camera2D.boundsY = -1920
 	get_node("Camera2D").position = newShip.position - (get_viewport_rect().size / 2)
 	get_node("CanvasLayer/Control").rect_global_position = newShip.position
+	get_node("Camera2D").inGame = true
 	emit_signal("updateUI")
+	
+	nameCounter = get_node("/root/Game Scene/Ship/TowerBucket").get_child_count()
 
 func _input(event: InputEvent) -> void:
 	if curHold and Input.is_action_just_pressed("mouse_left") and validPlace == true:
 		var spawnTower = tower.instance()
 		spawnTower.position = get_node("Cursor").position
 		spawnTower.type = new_tower_type
+		nameCounter += 1
+		spawnTower.name = str("tower",nameCounter)
 		get_node("/root/Game Scene/Ship/TowerBucket").add_child(spawnTower)
 		curHold = false
 		get_node("Cursor").hide()
 		money += (price * -1)
 		price = 0
 		emit_signal("updateUI")
+		Settings.save_game("res://save(GAME).json",'Game Object')
 	elif curHold and event is InputEventScreenTouch and event.pressed == false:
 		if  validPlace == true:
 			var spawnTower = tower.instance()
@@ -44,6 +57,7 @@ func _input(event: InputEvent) -> void:
 			money += (price * -1)
 			price = 0
 			emit_signal("updateUI")
+#			Settings.save_game("res://save(GAME).json",'Game Object')
 		else:
 			new_tower_type = ""
 			price = 0
@@ -53,6 +67,10 @@ func _input(event: InputEvent) -> void:
 func _process(delta):
 	if curHold:
 		get_node("Cursor").position = get_global_mouse_position()
+	
+#	if wave == totalWaves:
+##		Settings.save_game("res://save(GAME).json",'Game Object')
+#		get_tree().change_scene("res://Scenes/Menu.tscn")
 
 func SpawnMob(var spawnTarget : Vector2, var spawnType : String):
 	var spawnMob = mob.instance()
@@ -112,3 +130,13 @@ func _on_Control_BigShip_pressed():
 		get_node("Ship").type = "ship1"
 		get_node("Ship").TypeList()
 		emit_signal("updateUI")
+
+func save():
+	var save_dict = {
+		"money":money,
+		"lives":lives
+	}
+	return save_dict
+
+func _Local_Level_Load():
+	pass # load in all of the files needed for this level.

@@ -226,6 +226,7 @@ margin_right = 99.9995
 margin_bottom = 100.5
 flat = true
 [connection signal="item_activated" from="Panel/wallLeft/ShipSubMenu/ShipList" to="." method="_on_ShipList_item_activated"]
+[connection signal="item_selected" from="Panel/wallLeft/ShipSubMenu/ShipList" to="." method="_on_ShipList_item_selected"]
 [connection signal="item_activated" from="Panel/wallRight/TowerSubMenu/ItemList" to="." method="_on_ItemList_item_activated"]
 [connection signal="item_selected" from="Panel/wallRight/TowerSubMenu/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="Panel/startbox/Button" to="." method="_on_Start_Button_pressed"]
